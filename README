@@ -4,4 +4,13 @@ http://www.open-aurec.com/wbforum/viewtopic.php?t=51528
 
 also http://www.gnu.org/software/xboard/engine-intf.html
 
-this here also best: http://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg
+{{{{{{{
+    this here also: http://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg
+
+    OK deci in folderul (Github)/Redist gasiti Winboard si proiectul in C al tipului care a facut si filmuletele pe youtube. Mai departe nu stiu ce se intampla :( e mult de citit si cautat pe net.
+    O sa ne descurcam pe Github atata timp cat fiecare umbla la alte fisiere. O sa functionam pe principiul X se ocupa de Board, Y se ocupa de piese etc.
+    Daca Y are nevoie de coordonatele tablei, nu se duce el cu mana lui in Board.java (de ex)(unde lucreaza X) si schimba astfel incat sai dea lui bine, ci apeleaza o metoda gen getValidCoords(piesa) prin care sa ia coord, chiar daca ea nu e inca implementata.
+    In cazul in care 2 umbla in acelasi timp la acelasi fisier se face bucati syncul pentru amandoi.
+
+    Pentru a organiza fiecare ce trebuie sa faca / de ce are nevoie o sa fol Issues pe Github (https://github.com/AcerxX/Chess-Project/issues) din simplul motiv ca putem asigna o anumita persoana sa faca acel lucru sa nu ne incurcam.
+}}}}}}}
