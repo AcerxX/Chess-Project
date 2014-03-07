@@ -1,0 +1,11 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copywright (C) [2014] [Alexandru MIHAI] [Andreea ILIES] [Teodora TANASE] [Anca ROSCA]
+${licensePrefix}
+${licensePrefix}This file is part of Thunder Chickens Chess Project.
+${licensePrefix}
+${licensePrefix}Title: The Chess Project of Team <Thunder Chickens> @ CS, PUB, RO. 
+<#if licenseLast??>
+${licenseLast}
+</#if>

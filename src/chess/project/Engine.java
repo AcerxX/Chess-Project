@@ -12,9 +12,9 @@ package chess.project;
  *
  * @author Alexandru MIHAI
  */
-public class Board {
+public class Engine {
 
-    void newGame() {
+    static void resetHash() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
