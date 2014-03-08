@@ -16,6 +16,7 @@ public class Board {
 
     /**
      * newGame()
+     * 
      * Reset the board to the standard chess starting position.
      * Set White on move.
      * Leave force mode and set the engine to play Black.
@@ -23,15 +24,6 @@ public class Board {
      * Reset clocks and time controls to the start of a new game.
      * Use wall clock for time measurement.
      * Stop clocks.
-     * Do not ponder on this move, even if pondering is on.
-     * Remove any search depth limit previously set by the sd command.
-     */
-    
-    /**
-     * piesele or sa aiba valorile: 
-     * pion 1
-     * tura 2
-     *
      */
     
     /*Variables needed for board implementation*/
