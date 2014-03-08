@@ -1,7 +1,7 @@
 New Stuff:
     Java engine: https://code.google.com/p/magnumchess/source/browse/#svn%2Fsrc%2Fmagnumchess
     Cateva idei din ce am citit pana acum: 
-        - XBoard interactioneaza cu scriptul prin println (trimitere comenzi) si readLine (primire comenzi) --vezi Main.java al proiectuluid e main sus.
+        - XBoard interactioneaza cu scriptul prin println (trimitere comenzi) si readLine (primire comenzi) --> vezi Main.java al proiectului de main sus.
 
         ETAPA 1:
             -presupune o parte din acest Main.java si Board.java, mai exact: xboard (http://www.gnu.org/software/xboard/engine-intf.html#8), new, force, go, white, black, quit, resign, move.
@@ -16,7 +16,7 @@ Setup instructions:
     OK deci in folderul (Github)/Redist gasiti Winboard si proiectul in C al tipului care a facut si filmuletele pe youtube. Mai departe nu stiu ce se intampla :( e mult de citit si cautat pe net.
     
     O sa ne descurcam pe Github atata timp cat fiecare umbla la alte fisiere. O sa functionam pe principiul X se ocupa de Board, Y se ocupa de piese etc.
-    !!! Daca Y are nevoie de coordonatele tablei, nu se duce el cu mana lui in Board.java (de ex)(unde lucreaza X) si schimba astfel incat sai dea lui bine, ci apeleaza o metoda gen getValidCoords(piesa) prin care sa ia coord, chiar daca ea nu e inca implementata.
+    !!! Daca Y are nevoie de coordonatele tablei, nu se duce el cu mana lui in Board.java (de ex)(unde lucreaza X) si schimba astfel incat sai dea lui bine, ci apeleaza o metoda gen getValidCoords(piesa) prin care sa ia coord, chiar daca ea nu e inca implementata!!!
     In cazul in care 2 umbla in acelasi timp la acelasi fisier se face bucati syncul pentru amandoi.
 
 How to GitHub:

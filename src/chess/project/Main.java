@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 public class Main {
     
     /**General variables*/
+    public static final String engineName = "Thunder Chickens Chess Engine v.01";
     public static BufferedReader reader;
     public static String cmd;
     public static Board Board;
@@ -65,9 +66,9 @@ public class Main {
     }
     
     /**
-     * Method printCopywright()
+     * Method printCopywright() !!!IDK IF BUG!!!
      * 
-     * Prints the Copywright at the begining of the game.
+     * Prints the copyright at the beginning of the game.
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
@@ -77,26 +78,31 @@ public class Main {
     public static void getCmd() throws IOException{
         while(true){
             cmd = reader.readLine();
-            if(cmd.startsWith("quit"))
-                //Should be replaced with resign or a nice announce!!!
-                System.exit(0);
-            else if(cmd.indexOf("setvalue") != -1)
-                SetClopParams(cmd);
+            if(cmd.startsWith("quit"))               
+                System.exit(0);           
             else if(cmd.equals("RandomTest")){
                 Board.newGame();
                 Engine.resetHash();
             }
+            
+            //Theese can be replaced with cmd.equals(string) and a case ffs
+            else if(cmd.indexOf("new") != -1)
+                Board.newGame();
+            else if(cmd.indexOf("xboard") != -1)
+                System.out.println("feature san=0 time=0 draw=1 myname=\""+engineName+"\" colors=1 done=1");
+            else if(cmd.indexOf("white") != -1)
+                Engine.setColorOnMove("white");
+            else if(cmd.indexOf("black") != -1)
+                Engine.setColorOnMove("black");
+            else if(cmd.indexOf("force") != -1)
+                Engine.setForced(true);
+            else if(cmd.indexOf("go") != -1)
+                Engine.setForced(false);
+            else if(cmd.indexOf("resign") != -1)
+                Engine.resign();
+            else if(cmd.indexOf("move") != -1)
+                Engine.move(cmd);
         }
-    }
-    
-    /**
-     * Method SetClopParams
-     * 
-     * Sets parameters for ALL pieces on board.
-     * @param command 
-     */
-    public static void SetClopParams(String command){
-           //TODO Code for params set
     }
 }
 
