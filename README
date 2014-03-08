@@ -1,23 +1,8 @@
-New Stuff:
-    Java engine: https://code.google.com/p/magnumchess/source/browse/#svn%2Fsrc%2Fmagnumchess
-    Cateva idei din ce am citit pana acum: 
-        - XBoard interactioneaza cu scriptul prin println (trimitere comenzi) si readLine (primire comenzi) --> vezi Main.java al proiectului de main sus.
-
-        ETAPA 1:
-            -presupune o parte din acest Main.java si Board.java, mai exact: xboard (http://www.gnu.org/software/xboard/engine-intf.html#8), new, force, go, white, black, quit, resign, move.
-
 How to XBoard:
 
-    OK deci am updatat pagina de wiki a proiectului de pe github (exista o sectiune mica wiki in dreapta) unde sunt explicate toate comenzile pe sistemul "man xboard".
-    Pe langa ce e acolo mai avem si tutorialul asta de pe youtube (facut in C): http://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg  
+    OK deci am updatat pagina de wiki a proiectului de pe github (exista o sectiune mica wiki in dreapta) unde sunt explicate toate comenzile pe sistemul "man xboard". O varianta mai colorata e in link 1.
+    Pe langa ce e acolo mai avem si tutorialul asta (link 4) de pe youtube (facut in C). 
 
-Setup instructions:
-
-    OK deci in folderul (Github)/Redist gasiti Winboard si proiectul in C al tipului care a facut si filmuletele pe youtube. Mai departe nu stiu ce se intampla :( e mult de citit si cautat pe net.
-    
-    O sa ne descurcam pe Github atata timp cat fiecare umbla la alte fisiere. O sa functionam pe principiul X se ocupa de Board, Y se ocupa de piese etc.
-    !!! Daca Y are nevoie de coordonatele tablei, nu se duce el cu mana lui in Board.java (de ex)(unde lucreaza X) si schimba astfel incat sai dea lui bine, ci apeleaza o metoda gen getValidCoords(piesa) prin care sa ia coord, chiar daca ea nu e inca implementata!!!
-    In cazul in care 2 umbla in acelasi timp la acelasi fisier se face bucati syncul pentru amandoi.
 
 How to GitHub:
     
@@ -25,10 +10,21 @@ How to GitHub:
     2) Dupa login o sa aveti la numele contului vostru AcerxX/Chess-Project si ii dati CLONE (poate dura putin).
     3) Se deschide proiectul in IDE se fac orice fel de modificari apoi se face commit la modificarile respective pe GitHub. Pentru asta, in NetBeans selectezi Chess Project in tabul de projects (din stanga, gen root-ul proiectului, pentru ca altfel va face commit doar la fisierul selectat) --> Team (sus in toolbar) --> Commit... --> se scriu la commit message ce schimbari sau facut --> Commit (buton).
     4) Se deschide aplicatia de GitHub --> se intra in proiect --> sync (buton dreapta sus).
-    
-    Enjoy!
+
 
 Organizare:
 
-    Pentru a organiza fiecare ce trebuie sa faca / de ce are nevoie o sa fol Issues pe Github (https://github.com/AcerxX/Chess-Project/issues) din simplul motiv ca putem asigna o anumita persoana sa faca acel lucru sa nu ne incurcam.
+    Pentru a organiza fiecare ce trebuie sa faca / de ce are nevoie o sa fol Issues pe Github (link 5) din simplul motiv ca putem asigna o anumita persoana sa faca acel lucru sa nu ne incurcam.
     Persoana caruia ia fost asignat un task apare in dreapta jos chenarului issue-ului respectiv (doar avatarul aparent), deci probabil o sa ne schimbam avatarele CUMVA (caci e ca naiba de greu x( )
+
+
+LINKS:
+    Link 1: http://www.gnu.org/software/xboard/engine-intf.html
+    Link 2: Java engine: https://code.google.com/p/magnumchess/source/browse/#svn%2Fsrc%2Fmagnumchess
+    Link 3: C engine: see Documents/Github/Chess pRoject/redist
+    Link 4: http://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg 
+    Link 5: https://github.com/AcerxX/Chess-Project/issues
+    Link 6: FAQ xboard: http://www.chemie.fu-berlin.de/chemnet/use/info/xboard/FAQ.html
+    Link 7: DE CITIT: http://stackoverflow.com/questions/494721/what-are-some-good-resources-for-writing-a-chess-engine
+    Link 8: Pentru mai incolo daca e cazul alfa-beta: http://web.archive.org/web/20070704121716/http://www.brucemo.com/compchess/programming/alphabeta.htm
+    Link 9: GNU Chess source: http://svn.savannah.gnu.org/viewvc/trunk/src/engine/?root=chess
