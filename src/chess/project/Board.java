@@ -26,8 +26,23 @@ public class Board {
      * Do not ponder on this move, even if pondering is on.
      * Remove any search depth limit previously set by the sd command.
      */
+    
+    /**
+     * piesele or sa aiba valorile: 
+     * pion 1
+     * tura 2
+     *
+     */
+    
+    /*Variables needed for board implementation*/
+    public static int[][] board;
+    
     void newGame() {
+        
+        board = new int[15][15];
+        //TODO setarea pieselor pe tabla
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
