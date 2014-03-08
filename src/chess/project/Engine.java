@@ -14,6 +14,7 @@ package chess.project;
  */
 public class Engine {
 
+    static String white = new String();
     static void resetHash() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
