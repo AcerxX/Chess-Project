@@ -27,14 +27,14 @@ public class Board {
      */
     
     /*Variables needed for board implementation*/
-   // public static int[][] board = new int[12][10];
+    public static int[][] board;
     
     @SuppressWarnings("empty-statement")
     static void newGame() {
         int i,j;
        
         //TODO setarea pieselor pe tabla    
-        int[][] board = { {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
+        int[][] newBoard = { {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
                           {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
                           {-1,'t','c','n','d','r','n','c','t',-1},
                           {-1,'p','p','p','p','p','p','p','p',-1},
@@ -47,6 +47,8 @@ public class Board {
                           {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
                           {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1}
                         };
+        board = new int[12][10];
+        board = newBoard;
         
     }
 
