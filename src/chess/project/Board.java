@@ -27,7 +27,7 @@ public class Board {
      */
     
     /*Variables needed for board implementation*/
-    public static int[][] board;
+   // public static int[][] board = new int[12][10];
     
     @SuppressWarnings("empty-statement")
     static void newGame() {
@@ -49,6 +49,5 @@ public class Board {
                         };
         
     }
-    public static void main(String Args[])
-    {newGame();}
+
 }
