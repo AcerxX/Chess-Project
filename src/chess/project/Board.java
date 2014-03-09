@@ -29,12 +29,26 @@ public class Board {
     /*Variables needed for board implementation*/
     public static int[][] board;
     
-    void newGame() {
-        
-        board = new int[15][15];
-        //TODO setarea pieselor pe tabla
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @SuppressWarnings("empty-statement")
+    static void newGame() {
+        int i,j;
+       
+        //TODO setarea pieselor pe tabla    
+        int[][] board = { {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
+                          {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
+                          {-1,'t','c','n','d','r','n','c','t',-1},
+                          {-1,'p','p','p','p','p','p','p','p',-1},
+                          {-1, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,-1},
+                          {-1, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,-1},
+                          {-1, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,-1},
+                          {-1, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,-1},
+                          {-1,'P','P','P','P','P','P','P','P',-1},
+                          {-1,'T','C','N','D','R','N','C','T',-1},
+                          {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
+                          {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1}
+                        };
         
     }
-    
+    public static void main(String Args[])
+    {newGame();}
 }
