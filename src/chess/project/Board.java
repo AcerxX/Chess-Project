@@ -8,6 +8,9 @@
 
 package chess.project;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Alexandru MIHAI
@@ -30,9 +33,8 @@ public class Board {
      */
     @SuppressWarnings("empty-statement")
     static void newGame() {
-        int i,j;
-       
-        //TODO setarea pieselor pe tabla    
+        
+        /**/
         int[][] newBoard = { {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
                           {-1, -1, -1, -1, -1, -1, -1, -1, -1,-1},
                           {-1,'t','c','n','d','r','n','c','t',-1},
@@ -48,7 +50,10 @@ public class Board {
                         };
         board = new int[12][10];
         board = newBoard;
-        //TODO everything else;
+        Clock.setClock(500);
+        Engine.setColorOnMove("white");
+        Engine.setForced(false);
+        Clock.stopped(true);
     }
 
 }

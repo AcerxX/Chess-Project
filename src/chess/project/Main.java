@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.1a
+ * @version 0.2a
  * @author Alexandru MIHAI
  */
 public class Main {
