@@ -76,10 +76,19 @@ public class Main {
     }
     
     public static void getCmd() throws IOException{
+        BufferedWriter debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
         while(true){
-            cmd = reader.readLine();
+            cmd = reader.readLine();  
+            debug.write(cmd);
+            debug.flush();
+            debug.newLine();
+            debug.flush();
+            debug.write("\n"+"-------------"+"\n");
+            debug.newLine();
+            debug.flush();
+            
             if(cmd.startsWith("quit"))               
-                System.exit(0);           
+                break;           
             else if(cmd.equals("RandomTest")){
                 Board.newGame();
                 Engine.resetHash();
@@ -104,6 +113,8 @@ public class Main {
                 //TODO
                 if(Moves.isLegal(cmd))
                     System.out.println("The move is legal.");
-        }
+    }
+        debug.close();
+        System.exit(0);
     }
 }
