@@ -101,7 +101,9 @@ public class Main {
             else if(cmd.indexOf("resign") != -1)
                 Engine.resign();
             else if(cmd.indexOf("move") != -1)
-                Engine.move(cmd);
+                //TODO
+                if(Moves.isLegal(cmd))
+                    System.out.println("The move is legal.");
         }
     }
 }
