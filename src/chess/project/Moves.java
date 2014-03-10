@@ -5,20 +5,44 @@ package chess.project;
  * @author Selennae
  */
 public class Moves {
+    
+    /*General variables for handling moves*/
      static String theMove;
-    // verifica daca miscarea este legala
+     
+    /**
+     * Method isLegal(String)
+     * 
+     * Verifica daca mutarea este legala
+     * 
+     * @param theMove
+     * @return 
+     */
     static boolean isLegal(String theMove)
     {
         return true;
     }
     
-    // verifica daca mutarea se face in tura corecta
+    /**
+     * Method isInTurn()
+     * 
+     * Verifica daca mutarea se face in tura corecta
+     * 
+     * @return 
+     */
     static boolean isInTurn()
     {
         return true;
     }
     
-    // cauta mutari potrivite
+    /**
+     * Method computeMove(Board, Board)
+     * 
+     * Cauta mutari potrivite
+     * 
+     * @param x
+     * @param y
+     * @return 
+     */
     static String computeMove(Board x, Board y)
     {
         return theMove;

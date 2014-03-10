@@ -12,8 +12,11 @@ package chess.project;
  *
  * @author Alexandru MIHAI
  */
-public class Board {
-
+public class Board {    
+    
+    /*Variables needed for board implementation*/
+    public static int[][] board;
+    
     /**
      * newGame()
      * 
@@ -25,10 +28,6 @@ public class Board {
      * Use wall clock for time measurement.
      * Stop clocks.
      */
-    
-    /*Variables needed for board implementation*/
-    public static int[][] board;
-    
     @SuppressWarnings("empty-statement")
     static void newGame() {
         int i,j;
@@ -49,7 +48,7 @@ public class Board {
                         };
         board = new int[12][10];
         board = newBoard;
-        
+        //TODO everything else;
     }
 
 }

@@ -16,19 +16,16 @@ public class Engine {
 
    // static int clock;
     
-/*    static void resetHash() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-*/  static Board x;
+    static Board x;
     static Board y;
     static String theMove;
     static boolean isForced;
-     
-    static void resetHash()
-    {
-        
-    }
     
+    /**
+     * Method white()
+     * 
+     * Handles white command from Winboard
+     */
     static void white()
     {
         Engine.move();
@@ -36,6 +33,11 @@ public class Engine {
         Clock.stopped(true);
     }
     
+    /**
+     * Method black()
+     * 
+     * Handles black command from Winboard
+     */
     static void black()
     {
         Engine.move();
@@ -43,14 +45,31 @@ public class Engine {
         Clock.stopped(true);
     }
 
+    /**
+     * Method setColorOnMove(String)
+     * 
+     * Sets the right color to move
+     * 
+     * @param turn 
+     */
     static void setColorOnMove(String turn) {
-        if (turn.equals("white"))
-            Engine.white();
-        else
-            if (turn.equals("black"))
+        switch (turn) {
+            case "white":
+                Engine.white();
+                break;
+            case "black":
                 Engine.black();
+                break;
+        }
     }
 
+    /**
+     * Method setForced(boolean)
+     * 
+     * Sets whenever the engine is in force mode or not
+     * 
+     * @param ok 
+     */
     static void setForced(boolean ok) {
         if (ok)
             isForced = true;
@@ -58,10 +77,12 @@ public class Engine {
             isForced = false;
     }
 
+    
     static void resign() {
         
     }
 
+    
     static void move() {
         if (isForced)
         {    

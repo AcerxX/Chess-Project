@@ -66,7 +66,7 @@ public class Main {
     }
     
     /**
-     * Method printCopywright() !!!IDK IF BUG!!!
+     * Method printCopywright()
      * 
      * Prints the copyright at the beginning of the game.
      */
@@ -75,10 +75,20 @@ public class Main {
         System.out.println("***********Version 0.1a************");
     }
     
+    /**
+     * Method getCmd()
+     * 
+     * Reads commands sent by Winboard and redirects them to the correct method to be handled.
+     * Writes all received command in debug_engine.txt.
+     * 
+     * @throws IOException 
+     */
     public static void getCmd() throws IOException{
         BufferedWriter debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
         while(true){
-            cmd = reader.readLine();  
+            cmd = reader.readLine();
+            
+            //TODO Optimizations
             debug.write(cmd);
             debug.flush();
             debug.newLine();
@@ -87,15 +97,11 @@ public class Main {
             debug.newLine();
             debug.flush();
             
-            if(cmd.startsWith("quit"))               
-                break;           
-            else if(cmd.equals("RandomTest")){
-                Board.newGame();
-                Engine.resetHash();
-            }
-            
-            //Theese can be replaced with cmd.equals(string) and a case ffs
-            else if(cmd.indexOf("new") != -1)
+            if(cmd.startsWith("quit")){
+                debug.close();
+                System.exit(0); 
+            }            
+            else if(cmd.equals("new"))
                 Board.newGame();
             else if(cmd.indexOf("xboard") != -1)
                 System.out.println("feature san=0 time=0 draw=1 myname=\""+engineName+"\" colors=1 done=1");
@@ -113,8 +119,6 @@ public class Main {
                 //TODO
                 if(Moves.isLegal(cmd))
                     System.out.println("The move is legal.");
-    }
-        debug.close();
-        System.exit(0);
+        }        
     }
 }
