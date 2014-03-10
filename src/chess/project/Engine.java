@@ -77,9 +77,13 @@ public class Engine {
             isForced = false;
     }
 
-    
+    /**
+     * Method resign()
+     * 
+     * Resigns xD.
+     */
     static void resign() {
-        
+        System.out.println("resign");
     }
 
     

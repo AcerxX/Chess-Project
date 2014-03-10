@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.2.1a
+ * @version 0.2.2a
  * @author Alexandru MIHAI
  */
 public class Main {
@@ -98,7 +98,9 @@ public class Main {
             debug.flush();
             
             if(cmd.startsWith("quit")){
-                 break;
+                debug.close();
+                System.exit(0);
+                 //break;
             }            
             else if(cmd.equals("new"))
                 Board.newGame();
@@ -116,11 +118,9 @@ public class Main {
                 Engine.resign();            
             else if(cmd.equals("e2e4")/*WORKS LOL*/){
                 System.out.println("move e7e5");
-                System.out.println("1-0 {The chickens resign!}");
-            }              
+                Engine.resign();
+            }
                     
         }
-        debug.close();
-        System.exit(0);
     }
 }
