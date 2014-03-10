@@ -8,9 +8,6 @@
 
 package chess.project;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  *
  * @author Alexandru MIHAI
@@ -50,10 +47,12 @@ public class Board {
                         };
         board = new int[12][10];
         board = newBoard;
-        Clock.setClock(500);
+        
+        /*!!!!!!!ONE OR MORE OF THEESE BREAK THE CODE!!!!!!!*/
+        /*Clock.setClock(500);
         Engine.setColorOnMove("white");
         Engine.setForced(false);
-        Clock.stopped(true);
+        Clock.stopped(true);*/
     }
 
 }
