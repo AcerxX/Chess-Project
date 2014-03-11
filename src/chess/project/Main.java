@@ -116,7 +116,8 @@ public class Main {
                 Engine.setForced(false);
             else if(cmd.indexOf("resign") != -1)
                 Engine.resign();            
-            else if(cmd.equals("e2e4")/*WORKS LOL*/){
+            else if(Moves.checkIfMove(cmd)){
+                //TODO Engine.move
                 System.out.println("move e7e5");
                 Engine.resign();
             }
