@@ -16,6 +16,7 @@ public class Moves {
     
     /*General variables for handling moves*/
      static String theMove;
+     static String receivedMove;
      
     /**
      * Method isLegal(String)
@@ -53,7 +54,19 @@ public class Moves {
      */
     static String computeMove(Board x, Board y)
     {
-        
         return theMove;
+    }
+    
+    static boolean checkIfMove(String move){
+        for(int i=0;i<12;i++)
+            for(int j=0;j<10;j++)
+                for(int k=0;k<10;k++)
+                    for(int l=0;l<10;l++)
+                        if(move.equals(""+Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
+                            receivedMove = ""+Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
+                            return true;
+                        }
+                            
+        return false;
     }
 }
