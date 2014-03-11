@@ -72,5 +72,13 @@ public class Board {
         Engine.setForced(false);
         Clock.stopped(true);*/
     }
+    
+    public String translatePosition(int i, int j){
+        return Board.boardOfMoves[i][j];
+    }
+    
+    public String translatePosition(String position){
+        return "not implemented";
+    }
 
 }

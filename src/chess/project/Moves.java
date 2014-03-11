@@ -57,6 +57,14 @@ public class Moves {
         return theMove;
     }
     
+    /**
+     * Method checkIfMove(String)
+     * 
+     * Checks if the read command is a move
+     * 
+     * @param move
+     * @return 
+     */
     static boolean checkIfMove(String move){
         for(int i=0;i<12;i++)
             for(int j=0;j<10;j++)
