@@ -8,8 +8,6 @@
 
 package chess.project;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Alexandru MIHAI
@@ -65,12 +63,6 @@ public class Board {
         board = newBoard;
         boardOfMoves = new String[12][10];
         boardOfMoves = newBoardOfMoves;
-        
-        /*!!!!!!!ONE OR MORE OF THEESE BREAK THE CODE!!!!!!!*/
-        /*Clock.setClock(500);
-        Engine.setColorOnMove("white");
-        Engine.setForced(false);
-        Clock.stopped(true);*/
     }
     
     public String translatePosition(int i, int j){
