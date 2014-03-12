@@ -98,7 +98,7 @@ public class Board {
      * @param j
      * @return 
      */
-    public String translatePosition(int i, int j){
+    public static String translatePosition(int i, int j){
         return Board.boardOfMoves[i][j];
     }
     
@@ -114,7 +114,7 @@ public class Board {
     * @param position
     * @return int[][]
     */
-    public int[][] translatePosition(String position){
+    public static int[][] translatePosition(String position){
         
         int[][] v = new int[2][2];
         for(int i=2;i<10;i++)
@@ -139,13 +139,13 @@ public class Board {
      * @param position
      * @return 
      */
-    public int[] contains(String position){
+    public static int[] contains(String position){
         
         int[] v = new int[2];
-        for(int i=2;i<10;i++)
-            for(int j=1;j<9;j++)
-                for(int k=2;k<10;k++)
-                    for(int l=1;l<9;l++)
+        for(int i=0;i<12;i++)
+            for(int j=0;j<10;j++)
+                for(int k=0;k<12;k++)
+                    for(int l=0;l<10;l++)
                         if(position.equals(boardOfMoves[i][j]+boardOfMoves[k][l])){
                             v[0] = board[i][j];
                             v[1] = board[k][l];

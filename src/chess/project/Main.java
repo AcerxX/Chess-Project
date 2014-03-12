@@ -91,9 +91,11 @@ public class Main {
     public static void getCmd() throws IOException{
         
             BufferedWriter debug = null;
+            int m = 0;
             
         while(true){
             cmd = reader.readLine();
+            
             
             //TODO Optimizations
             if(allowDebug == 1){
@@ -127,11 +129,18 @@ public class Main {
             else if(cmd.indexOf("go") != -1)
                 Engine.setForced(false);            
             else if(Moves.checkIfMove(cmd)){
-                System.out.println("move e7e5");
-                Engine.resign();
-            } else {
-            }
+                int v[][] = Board.translatePosition(cmd);
+                int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
+                int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
+                
+                m++;
+                if(m == 3)
+                    Engine.resign();
+                
+                System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));              
+                        
                     
+            }
         }
     }
 }
