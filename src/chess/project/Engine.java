@@ -10,11 +10,10 @@ package chess.project;
 
 /**
  *
+ * @version 0.2.3a
  * @author Alexandru MIHAI
  */
 public class Engine {
-
-   // static int clock;
     
     static Board x;
     static Board y;
@@ -22,9 +21,9 @@ public class Engine {
     static boolean isForced;
     
     /**
-     * Method white()
+     * Metoda white()
      * 
-     * Handles white command from Winboard
+     * Proceseaza comanda "white" de la Winboard.
      */
     static void white()
     {
@@ -34,9 +33,9 @@ public class Engine {
     }
     
     /**
-     * Method black()
+     * Metoda black()
      * 
-     * Handles black command from Winboard
+     * Proceseaza comanda "black" de la Winboard.
      */
     static void black()
     {
@@ -46,9 +45,9 @@ public class Engine {
     }
 
     /**
-     * Method setColorOnMove(String)
+     * Metoda setColorOnMove(String)
      * 
-     * Sets the right color to move
+     * Seteaza ce culoare sa mute.
      * 
      * @param turn 
      */
@@ -64,9 +63,9 @@ public class Engine {
     }
 
     /**
-     * Method setForced(boolean)
+     * Metoda setForced(boolean)
      * 
-     * Sets whenever the engine is in force mode or not
+     * Seteaza rularea sau oprirea din rulare in modul forced a engineului.
      * 
      * @param ok 
      */
@@ -78,7 +77,7 @@ public class Engine {
     }
 
     /**
-     * Method resign()
+     * Metoda resign()
      * 
      * Resigns xD.
      */
@@ -86,7 +85,9 @@ public class Engine {
         System.out.println("resign");
     }
 
-    
+    /**
+     * x si y sunt coordonatele de pe tabla
+     */
     static void move() {
         if (isForced)
         {    
@@ -102,7 +103,6 @@ public class Engine {
         {
             Clock.stopped(false);
             theMove = Moves.computeMove( x, y);
-            // x si y sunt coordonatele de pe tabla
             if (Moves.isLegal(theMove))
                 System.out.println("move " + theMove);
         }

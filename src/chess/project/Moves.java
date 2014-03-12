@@ -10,6 +10,7 @@ package chess.project;
 
 /**
  *
+ * @version 0.2.3a
  * @author Selennae
  */
 public class Moves {
@@ -19,7 +20,7 @@ public class Moves {
      static String receivedMove;
      
     /**
-     * Method isLegal(String)
+     * Metoda isLegal(String)
      * 
      * Verifica daca mutarea este legala
      * 
@@ -32,7 +33,7 @@ public class Moves {
     }
     
     /**
-     * Method isInTurn()
+     * Metoda isInTurn()
      * 
      * Verifica daca mutarea se face in tura corecta
      * 
@@ -44,7 +45,7 @@ public class Moves {
     }
     
     /**
-     * Method computeMove(Board, Board)
+     * Metoda computeMove(Board, Board)
      * 
      * Cauta mutari potrivite
      * 
@@ -58,19 +59,19 @@ public class Moves {
     }
     
     /**
-     * Method checkIfMove(String)
+     * Metoda checkIfMove(String)
      * 
-     * Checks if the read command is a move
+     * Verifica daca comanda primita este o mutare.
      * 
      * @param move
      * @return 
      */
-    static boolean checkIfMove(String move){
+    static boolean checkIfMove(String cmd){
         for(int i=2;i<10;i++)
             for(int j=1;j<9;j++)
                 for(int k=2;k<10;k++)
                     for(int l=1;l<9;l++)
-                        if(move.equals(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
+                        if(cmd.equals(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
                             receivedMove = Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
                             return true;
                         }

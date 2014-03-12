@@ -17,12 +17,12 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.2.2a
+ * @version 0.2.3a
  * @author Alexandru MIHAI
  */
 public class Main {
     
-    /**General variables*/
+    /**Variabile generale*/
     public static final String engineName = "Thunder Chickens Chess Engine v.01";
     public static BufferedReader reader;
     public static String cmd;
@@ -30,7 +30,7 @@ public class Main {
     private static final int allowDebug = 0;
     private static boolean fileCreated = false;
     
-    /**End Game conditions*/
+    /**Conditii end game*/
     public static int iCheckmate;
     public static int i50MovesRule;
     public static int iTimeOut;
@@ -71,20 +71,20 @@ public class Main {
     }
     
     /**
-     * Method printCopywright()
+     * Metoda printCopywright()
      * 
-     * Prints the copyright at the beginning of the game.
+     * Afiseaza mesajul de copywright la rularea programului (nedetectabil in Winboard)
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
-        System.out.println("***********Version 0.1a************");
+        System.out.println("**********Version 0.2.3a***********");
     }
     
     /**
-     * Method getCmd()
+     * Metoda getCmd()
      * 
-     * Reads commands sent by Winboard and redirects them to the correct method to be handled.
-     * Writes all received command in debug_engine.txt.
+     * Citeste comenzile trimise de Winboard si le redirectioneaza catre metoda corecta pentru a fi procesate.
+     * Scrie toate comenzile primite in fisierul debug_engine.txt, prin modificarea variabilei allowDebug.
      * 
      * @throws IOException 
      */
@@ -125,9 +125,7 @@ public class Main {
             else if(cmd.indexOf("force") != -1)
                 Engine.setForced(true);
             else if(cmd.indexOf("go") != -1)
-                Engine.setForced(false);
-            else if(cmd.indexOf("resign") != -1)
-                Engine.resign();            
+                Engine.setForced(false);            
             else if(Moves.checkIfMove(cmd)){
                 System.out.println("move e7e5");
                 Engine.resign();

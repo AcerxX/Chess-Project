@@ -10,19 +10,20 @@ package chess.project;
 
 /**
  *
+ * @version 0.2.3a
  * @author Selennae
  */
 public class Clock {
     
-    /*Variables nned to handle the clock*/
+    /*Variables needed to handle the clock*/
      static int clock;
      static int whiteClock;
      static int blackClock;
     
      /**
-      * Method getClock()
+      * Metoda getClock()
       * 
-      * Returns clock variable.
+      * Returneaza valoarea ceasului.
       * 
       * @return 
       */
@@ -32,9 +33,9 @@ public class Clock {
     }
     
     /**
-     * Method setClock(int)
+     * Metoda setClock(int)
      * 
-     * Sets clock value.
+     * Seteaza ceasul.
      * 
      * @param clock 
      */
@@ -44,7 +45,7 @@ public class Clock {
     }
     
     /**
-     * Method stopped(boolean)
+     * Metoda stopped(boolean)
      * 
      * @param ok 
      */
