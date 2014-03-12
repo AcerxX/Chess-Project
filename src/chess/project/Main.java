@@ -84,23 +84,22 @@ public class Main {
      * @throws IOException 
      */
     public static void getCmd() throws IOException{
-        BufferedWriter debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
+       //BufferedWriter debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
         while(true){
             cmd = reader.readLine();
             
             //TODO Optimizations
-            debug.write(cmd);
+            /*debug.write(cmd);
             debug.flush();
             debug.newLine();
             debug.flush();
             debug.write("\n"+"-------------"+"\n");
             debug.newLine();
-            debug.flush();
+            debug.flush();*/
             
             if(cmd.startsWith("quit")){
-                debug.close();
+                //debug.close();
                 System.exit(0);
-                 //break;
             }            
             else if(cmd.equals("new"))
                 Board.newGame();
