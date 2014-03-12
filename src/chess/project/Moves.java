@@ -66,12 +66,12 @@ public class Moves {
      * @return 
      */
     static boolean checkIfMove(String move){
-        for(int i=0;i<12;i++)
-            for(int j=0;j<10;j++)
-                for(int k=0;k<10;k++)
-                    for(int l=0;l<10;l++)
-                        if(move.equals(""+Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
-                            receivedMove = ""+Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
+        for(int i=2;i<10;i++)
+            for(int j=1;j<9;j++)
+                for(int k=2;k<10;k++)
+                    for(int l=1;l<9;l++)
+                        if(move.equals(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
+                            receivedMove = Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
                             return true;
                         }
                             

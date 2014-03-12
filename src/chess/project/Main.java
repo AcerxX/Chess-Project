@@ -26,7 +26,9 @@ public class Main {
     public static final String engineName = "Thunder Chickens Chess Engine v.01";
     public static BufferedReader reader;
     public static String cmd;
-    public static Board Board;
+    public static Board board;
+    private static final int allowDebug = 0;
+    private static boolean fileCreated = false;
     
     /**End Game conditions*/
     public static int iCheckmate;
@@ -35,7 +37,10 @@ public class Main {
     
     public static String latestMoves;
     
+    
+    
     public static void main(String args[]) throws IOException{
+        Board.initAll();
         try{
             reader = new BufferedReader(new InputStreamReader(System.in));
             latestMoves = "none";
@@ -84,18 +89,26 @@ public class Main {
      * @throws IOException 
      */
     public static void getCmd() throws IOException{
-       //BufferedWriter debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
+        
+            BufferedWriter debug = null;
+            
         while(true){
             cmd = reader.readLine();
             
             //TODO Optimizations
-            /*debug.write(cmd);
-            debug.flush();
-            debug.newLine();
-            debug.flush();
-            debug.write("\n"+"-------------"+"\n");
-            debug.newLine();
-            debug.flush();*/
+            if(allowDebug == 1){
+                if(!fileCreated){
+                    debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
+                    fileCreated = true;
+                }
+                debug.write(cmd);
+                debug.flush();
+                debug.newLine();
+                debug.flush();
+                debug.write("\n"+"-------------"+"\n");
+                debug.newLine();
+                debug.flush();
+            }
             
             if(cmd.startsWith("quit")){
                 //debug.close();
@@ -116,9 +129,9 @@ public class Main {
             else if(cmd.indexOf("resign") != -1)
                 Engine.resign();            
             else if(Moves.checkIfMove(cmd)){
-                //TODO Engine.move
                 System.out.println("move e7e5");
                 Engine.resign();
+            } else {
             }
                     
         }
