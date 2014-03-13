@@ -120,9 +120,9 @@ public class Main {
             else if(cmd.indexOf("xboard") != -1)
                 System.out.println("feature san=0 time=0 draw=1 myname=\""+engineName+"\" colors=1 done=1");
             else if(cmd.indexOf("white") != -1)
-                Engine.setColorOnMove("white");
+                Engine.setEngineColor("white");
             else if(cmd.indexOf("black") != -1)
-                Engine.setColorOnMove("black");
+                Engine.setEngineColor("black");
             else if(cmd.indexOf("force") != -1)
                 Engine.setForced(true);
             else if(cmd.indexOf("go") != -1)

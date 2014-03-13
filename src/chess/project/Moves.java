@@ -18,6 +18,7 @@ public class Moves {
     /*General variables for handling moves*/
      static String theMove;
      static String receivedMove;
+     static int iW = 8, jW = 5, kW = 6, lW = 5;
      
     /**
      * Metoda isLegal(String)
@@ -66,27 +67,50 @@ public class Moves {
      * @param cmd 
      */
     static void computeMove(String cmd){
-        int v[][] = Board.translatePosition(cmd);
-        int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
-        int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
-        int aux;
-        if(Board.board[k][l] == -1){
-            Engine.resign();
-        }
-        else if(Board.board[i][j] != -1 &&
-                Board.board[i][j] != 'P' &&
-                Board.board[i][j] != 'T' &&
-                Board.board[i][j] != 'N' &&
-                Board.board[i][j] != 'C' &&
-                Board.board[i][j] != 'D' &&
-                Board.board[i][j] != 'R'){
-            aux = Board.board[k][l];
-            Board.board[k][l] = Board.board[i][j];
-            Board.board[i][j] = 0;
-            System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));
-        }else
-            Engine.resign();
+        
+        if(Engine.color == "black"){
             
+            int v[][] = Board.translatePosition(cmd);
+            int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
+            int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
+            int aux;
+            if(Board.board[k][l] == -1){
+                Engine.resign();
+            }else if(Board.board[i][j] != 'P' &&
+                     Board.board[i][j] != 'T' &&
+                     Board.board[i][j] != 'N' &&
+                     Board.board[i][j] != 'C' &&
+                     Board.board[i][j] != 'D' &&
+                     Board.board[i][j] != 'R'){
+                        aux = Board.board[k][l];
+                        Board.board[k][l] = Board.board[i][j];
+                        Board.board[i][j] = 0;
+                        System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));
+                    }else
+                        Engine.resign();
+        }else{
+            
+            if(Board.board[kW][lW] != -1 &&
+               Board.board[iW][jW] != 'p' &&
+               Board.board[iW][jW] != 't' &&
+               Board.board[iW][jW] != 'n' &&
+               Board.board[iW][jW] != 'c' &&
+               Board.board[iW][jW] != 'd' &&
+               Board.board[iW][jW] != 'r' &&
+               Board.board[kW][lW] != 'p' &&
+               Board.board[kW][lW] != 't' &&
+               Board.board[kW][lW] != 'n' &&
+               Board.board[kW][lW] != 'c' &&
+               Board.board[kW][lW] != 'd' &&
+               Board.board[kW][lW] != 'r'){
+                Board.board[kW][lW] = Board.board[iW][jW];
+                Board.board[iW][jW] = 0;                
+                System.out.println("move "+ Board.translatePosition(iW, jW) + Board.translatePosition(kW, lW));
+                iW=kW;
+                kW--;
+            }else
+                Engine.resign();
+        }
     }
     
     /**

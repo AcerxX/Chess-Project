@@ -19,6 +19,7 @@ public class Engine {
     static Board y;
     static String theMove;
     static boolean isForced;
+    static String color = "black";
     
     /**
      * Metoda white()
@@ -27,9 +28,8 @@ public class Engine {
      */
     static void white()
     {
-        Engine.move();
-        Engine.setColorOnMove("black");
-        Clock.stopped(true);
+        color = "white";
+        Moves.computeMove("WE ARE THUNDER!");
     }
     
     /**
@@ -39,19 +39,17 @@ public class Engine {
      */
     static void black()
     {
-        Engine.move();
-        Engine.setColorOnMove("white");
-        Clock.stopped(true);
+        color = "black";
     }
 
     /**
-     * Metoda setColorOnMove(String)
+     * Metoda setEngineColor(String)
      * 
      * Seteaza ce culoare sa mute.
      * 
      * @param turn 
      */
-    static void setColorOnMove(String turn) {
+    static void setEngineColor(String turn) {
         switch (turn) {
             case "white":
                 Engine.white();
