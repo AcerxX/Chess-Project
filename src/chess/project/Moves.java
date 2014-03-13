@@ -70,8 +70,9 @@ public class Moves {
         int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
         int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
         int aux;
-        if(Board.board[k][l] != 0)
+        if(Board.board[k][l] == -1){
             Engine.resign();
+        }
         else if(Board.board[i][j] != -1 &&
                 Board.board[i][j] != 'P' &&
                 Board.board[i][j] != 'T' &&
