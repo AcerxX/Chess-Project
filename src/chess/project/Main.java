@@ -104,10 +104,9 @@ public class Main {
                     fileCreated = true;
                 }
                 debug.write(cmd);
-                debug.flush();
                 debug.newLine();
                 debug.flush();
-                debug.write("\n"+"-------------"+"\n");
+                debug.write("-------------");
                 debug.newLine();
                 debug.flush();
             }
@@ -129,17 +128,8 @@ public class Main {
             else if(cmd.indexOf("go") != -1)
                 Engine.setForced(false);            
             else if(Moves.checkIfMove(cmd)){
-                int v[][] = Board.translatePosition(cmd);
-                int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
-                int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
-                
-                m++;
-                if(m == 3)
-                    Engine.resign();
-                
-                System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));              
-                        
-                    
+                Moves.recordMove(cmd);
+                Moves.computeMove(cmd);                     
             }
         }
     }
