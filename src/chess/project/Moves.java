@@ -10,7 +10,7 @@ package chess.project;
 
 /**
  *
- * @version 0.3a Etapa 1 FINAL
+ * @version 0.3.1a Etapa 1 FINAL
  * @author Selennae
  */
 public class Moves {
@@ -73,7 +73,6 @@ public class Moves {
             int v[][] = Board.translatePosition(cmd);
             int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
             int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
-            int aux;
             if(Board.board[k][l] == -1){
                 Engine.resign();
             }else if(Board.board[i][j] != 'P' &&
@@ -81,8 +80,8 @@ public class Moves {
                      Board.board[i][j] != 'N' &&
                      Board.board[i][j] != 'C' &&
                      Board.board[i][j] != 'D' &&
-                     Board.board[i][j] != 'R'){
-                        aux = Board.board[k][l];
+                     Board.board[i][j] != 'R' &&
+                     Board.board[recK][recL] != 'D'){
                         Board.board[k][l] = Board.board[i][j];
                         Board.board[i][j] = 0;
                         System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));
