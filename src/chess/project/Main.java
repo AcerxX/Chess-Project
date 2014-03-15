@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.2.3a
+ * @version 0.3a Etapa 1 FINAL
  * @author Alexandru MIHAI
  */
 public class Main {
@@ -118,7 +118,7 @@ public class Main {
             else if(cmd.equals("new"))
                 Board.newGame();
             else if(cmd.indexOf("xboard") != -1)
-                System.out.println("feature san=0 time=0 draw=1 myname=\""+engineName+"\" colors=1 done=1");
+                System.out.println("feature san=0 time=1 draw=1 myname=\""+engineName+"\" colors=1 done=1");
             else if(cmd.indexOf("white") != -1)
                 Engine.setEngineColor("white");
             else if(cmd.indexOf("black") != -1)
@@ -130,6 +130,9 @@ public class Main {
             else if(Moves.checkIfMove(cmd)){
                 Moves.recordMove(cmd);
                 Moves.computeMove(cmd);                     
+            }
+            else if(cmd.indexOf("time") != -1){
+                //TODO Clock
             }
         }
     }

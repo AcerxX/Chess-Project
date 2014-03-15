@@ -10,7 +10,7 @@ package chess.project;
 
 /**
  *
- * @version 0.2.3a
+ * @version 0.3a Etapa 1 FINAL
  * @author Selennae
  */
 public class Clock {

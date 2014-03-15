@@ -10,7 +10,7 @@ package chess.project;
 
 /**
  *
- * @version 0.2.3a
+ * @version 0.3a Etapa 1 FINAL
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -20,27 +20,6 @@ public class Engine {
     static String theMove;
     static boolean isForced;
     static String color = "black";
-    
-    /**
-     * Metoda white()
-     * 
-     * Proceseaza comanda "white" de la Winboard.
-     */
-    static void white()
-    {
-        color = "white";
-        Moves.computeMove("WE ARE THUNDER!");
-    }
-    
-    /**
-     * Metoda black()
-     * 
-     * Proceseaza comanda "black" de la Winboard.
-     */
-    static void black()
-    {
-        color = "black";
-    }
 
     /**
      * Metoda setEngineColor(String)
@@ -52,10 +31,11 @@ public class Engine {
     static void setEngineColor(String turn) {
         switch (turn) {
             case "white":
-                Engine.white();
+                color = "white";
+                Moves.computeMove("WE ARE THUNDER!");
                 break;
             case "black":
-                Engine.black();
+                color = "black";
                 break;
         }
     }
@@ -90,7 +70,7 @@ public class Engine {
         if (isForced)
         {    
             if (!Moves.isLegal(theMove))
-                System.out.println("Go home! You drunk");
+                System.out.println("Go home! You're drunk");
             else
                 if (Moves.isInTurn())
                 {    
