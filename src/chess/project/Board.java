@@ -20,15 +20,10 @@ public class Board {
     public static String[][] boardOfMoves;
     
     /**
-     * newGame()
+     * Metoda newGame()
      * 
-     * Reset the board to the standard chess starting position.
-     * Set White on move.
-     * Leave force mode and set the engine to play Black.
-     * Associate the engine's clock with Black and the opponent's clock with White.
-     * Reset clocks and time controls to the start of a new game.
-     * Use wall clock for time measurement.
-     * Stop clocks.
+     * Reseteaza matricea pieselor.
+     * TODO MORE in etapa 2
      */
     @SuppressWarnings("empty-statement")
     static void newGame() {
