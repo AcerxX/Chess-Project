@@ -22,8 +22,6 @@ public class Engine {
     static String color = "black";
 
     /**
-     * Metoda setEngineColor(String)
-     * 
      * Seteaza ce culoare sa mute.
      * 
      * @param turn 
@@ -41,8 +39,6 @@ public class Engine {
     }
 
     /**
-     * Metoda setForced(boolean)
-     * 
      * Seteaza rularea sau oprirea din rulare in modul forced a engineului.
      * 
      * @param ok 
@@ -55,8 +51,6 @@ public class Engine {
     }
 
     /**
-     * Metoda resign()
-     * 
      * Resigns xD.
      */
     static void resign() {
@@ -87,8 +81,6 @@ public class Engine {
     }
     
     /**
-     * Metoda checkIfCheck()
-     * 
      * Verifica daca este sah.
      * 
      * @return 

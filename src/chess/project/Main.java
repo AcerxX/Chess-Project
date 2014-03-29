@@ -44,8 +44,6 @@ public class Main {
     }
     
     /**
-     * Metoda printCopywright()
-     * 
      * Afiseaza mesajul de copywright la rularea programului (nedetectabil in Winboard)
      */
     public static void printCopywright(){
@@ -54,8 +52,6 @@ public class Main {
     }
     
     /**
-     * Metoda getCmd()
-     * 
      * Citeste comenzile trimise de Winboard si le redirectioneaza catre metoda corecta pentru a fi procesate.
      * Scrie toate comenzile primite in fisierul debug_engine.txt, prin modificarea variabilei allowDebug.
      * 

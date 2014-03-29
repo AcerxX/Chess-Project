@@ -23,8 +23,6 @@ public class Moves {
      static int iW = 8, jW = 5, kW = 6, lW = 5;
      
     /**
-     * Metoda isLegal(String)
-     * 
      * Verifica daca mutarea este legala
      * 
      * @param theMove
@@ -36,8 +34,6 @@ public class Moves {
     }
     
     /**
-     * Metoda isInTurn()
-     * 
      * Verifica daca mutarea se face in tura corecta
      * 
      * @return 
@@ -48,8 +44,6 @@ public class Moves {
     }
     
     /**
-     * Metoda computeMove(Board, Board)
-     * 
      * Cauta mutari potrivite
      * 
      * @param x
@@ -62,8 +56,6 @@ public class Moves {
     }
     
     /**
-     * Metoda computeMove(String)
-     * 
      * Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
      * 
      * @param cmd 
@@ -115,8 +107,6 @@ public class Moves {
     }
     
     /**
-     * Metoda checkIfMove(String)
-     * 
      * Verifica daca comanda primita este o mutare.
      * 
      * @param move
@@ -136,8 +126,6 @@ public class Moves {
     }
 
     /**
-     * Metoda recordMove(String)
-     * 
      * Modifica matricea engineului dupa primirea unei mutari de la Winboard.
      * 
      * @param cmd 
@@ -151,13 +139,13 @@ public class Moves {
     }
     
     /**
-     * Metoda getAllMoves()
-     * 
-     * Returneaza o lista cu toate miscarile posibile.
+     * Returneaza o lista cu toate miscarile posibile pentru o pozitie i si j.
      * 
      * @return 
      */
-    static ArrayList<String> getAllMoves(){
-         return null;        
+    static ArrayList<String> getAllMoves(int i, int j){
+        String howToMove;
+        howToMove = Pieces.getValid(i, j);
+        return null;        
     }
 }

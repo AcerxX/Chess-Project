@@ -21,8 +21,6 @@ public class Clock {
      static int blackClock;
     
      /**
-      * Metoda getClock()
-      * 
       * Returneaza valoarea ceasului.
       * 
       * @return 
@@ -33,8 +31,6 @@ public class Clock {
     }
     
     /**
-     * Metoda setClock(int)
-     * 
      * Seteaza ceasul.
      * 
      * @param clock 
@@ -45,8 +41,6 @@ public class Clock {
     }
     
     /**
-     * Metoda stopped(boolean)
-     * 
      * @param ok 
      */
     static void stopped(boolean ok)

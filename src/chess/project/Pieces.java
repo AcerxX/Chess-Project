@@ -16,8 +16,6 @@ public class Pieces {
     private static String type;
     
     /**
-     * Metoda setType(int i, int j)
-     * 
      * Seteaza piesa. POSIBIL SA DISPARA IN VIITORUL APROPIAT!
      * 
      * LEGAL DECLARATIONS:
@@ -61,8 +59,6 @@ public class Pieces {
     }
     
     /**
-     * Metoda getValid()
-     * 
      * Returneaza ca string posibilitatile de mutare a piesei de pe pozitia i si j sub forma de string. 
      * POSIBILITATI:
      *  - 1fata => poate fi mutata maxim o pozitie in fata;

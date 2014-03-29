@@ -20,8 +20,6 @@ public class Board {
     public static String[][] boardOfMoves;
     
     /**
-     * Metoda newGame()
-     * 
      * Reseteaza matricea pieselor.
      * TODO MORE in etapa 2
      */
@@ -47,8 +45,6 @@ public class Board {
     }
 
     /**
-     * Metoda initAll()
-     * 
      * Initializeaza toate componentele.
      * Cauza principala in cazul intalnirii erorii de null pointer exception!
      */
@@ -85,8 +81,6 @@ public class Board {
     }
     
     /**
-     * Metoda translatePosition(int, int)
-     * 
      * Returneaza coordonatele xboard pentru un i si j ale matricii
      * 
      * @param i
@@ -98,8 +92,6 @@ public class Board {
     }
     
    /**
-    * Metoda translatePosition(String)
-    * 
     * Returneaza coordonatele mutarii primite ca parametru:
     * - v[0][0] --> coordonata i de pe care a plecat;
     * - v[0][1] --> coordonata j de pe care a plecat;
@@ -126,8 +118,6 @@ public class Board {
     }
     
     /**
-     * Metoda contains(String)
-     * 
      * Returneaza un vector ce are pe prima pozitie continutul locului de unde a plecat piesa,
      * iar pe a doua pozitie continutul locului unde a ajuns piesa.
      * 
