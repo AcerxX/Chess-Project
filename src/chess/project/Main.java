@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.3.2a Etapa 1 FINAL
+ * @version 0.4a
  * @author Alexandru MIHAI
  */
 public class Main {

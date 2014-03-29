@@ -8,9 +8,11 @@
 
 package chess.project;
 
+import java.util.Random;
+
 /**
  *
- * @version 0.3a Etapa 1 FINAL
+ * @version 0.4a
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -44,10 +46,7 @@ public class Engine {
      * @param ok 
      */
     static void setForced(boolean ok) {
-        if (ok)
-            isForced = true;
-        else
-            isForced = false;
+        isForced = ok;
     }
 
     /**
@@ -88,6 +87,33 @@ public class Engine {
     static boolean checkIfCheck(){
         
         return false;
+    }
+    
+    /**
+     * Returneaza coordonatele i si j ale unei piese NEAGRE random de pe tabla. 
+     * @return 
+     */
+    static int[] getRandomPiece(){
+        
+        Random generator = new Random();
+        int[][] pairs = new int[16][2];
+        int k=0;
+        
+        for(int i = 0; i < 12; i++)
+            for(int j = 0; j < 10; j++)
+                if(Board.isBlackPiece(i,j)){
+                    pairs[k][0] = i;
+                    pairs[k][1] = j;
+                    k++;
+                }
+        
+        k = generator.nextInt(17);
+        int[] ret = new int[2];
+        ret[0] = pairs[k][0];
+        ret[1] = pairs[k][1];
+        
+        return ret;
+        
     }
     
 }

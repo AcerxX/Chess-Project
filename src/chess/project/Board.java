@@ -10,7 +10,7 @@ package chess.project;
 
 /**
  *
- * @version 0.3a Etapa 1 FINAL
+ * @version 0.4a
  * @author Alexandru MIHAI
  */
 public class Board {    
@@ -139,15 +139,29 @@ public class Board {
     }
 
     static boolean isWhitePiece(int i, int j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return board[i][j] == 'P' ||
+               board[i][j] == 'T' ||
+               board[i][j] == 'N' ||
+               board[i][j] == 'C' ||
+               board[i][j] == 'D' ||
+               board[i][j] == 'R';
     }
 
     static boolean isPiece(int i, int j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return isWhitePiece(i,j) || isBlackPiece(i,j);
     }
 
     static boolean isBlackPiece(int i, int j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return board[i][j] == 'p' ||
+               board[i][j] == 't' ||
+               board[i][j] == 'n' ||
+               board[i][j] == 'c' ||
+               board[i][j] == 'd' ||
+               board[i][j] == 'r';
+    }
+
+    static boolean outOfBounds(int i, int j) {
+        return board[i][j] == -1;
     }
 
 }

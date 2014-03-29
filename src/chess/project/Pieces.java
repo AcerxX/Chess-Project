@@ -8,6 +8,8 @@
 
 package chess.project;
 
+import java.util.ArrayList;
+
 /**
  * @version 0.4a
  * @author andre_000
@@ -89,6 +91,101 @@ public class Pieces {
         }
         
         return "";
+    }
+    
+    /**
+     * Returneaza o lista cu toate miscarile (in coord xboard) posibile SI LEGALE pentru o pozitie i si j.
+     * 
+     * @return 
+     */
+    static ArrayList<String> getAllMoves(int i, int j){
+        
+        /* Declarari generale */
+        ArrayList<String> listOfMoves = new ArrayList<>();
+        String howToMove;
+        howToMove = getValid(i, j);
+        int fata = 0, spate = 0, diag = 0, pd = 0, stanga = 0, dreapta = 0, pf = 0, ifata, ispate, idiag, ipd, ipf, istanga, idreapta;
+        
+        /* Setare pozitii mutare */
+        if((ifata = howToMove.indexOf("fata")) != -1)
+            fata = howToMove.charAt(ifata - 1);
+        if((ispate = howToMove.indexOf("spate")) != -1)
+            spate = howToMove.charAt(ispate - 1);
+        if((idiag = howToMove.indexOf("diag")) != -1)
+            diag = howToMove.charAt(idiag - 1);
+        if((ipd = howToMove.indexOf("pd")) != -1)
+            pd = 1;
+        if((ipf = howToMove.indexOf("pf")) != -1)
+            pf = 1;
+        if((istanga = howToMove.indexOf("stanga")) != -1)
+            stanga = howToMove.charAt(istanga - 1);
+        if((idreapta = howToMove.indexOf("dreapta")) != -1)
+            dreapta = howToMove.charAt(idreapta - 1);
+        
+        /* Generare mutari NEGRU*/
+        if(fata != 0)
+            for(int k = 0; k < ifata; k++)
+                if(Board.isBlackPiece(i+k,j) || (Board.board[i+k][j] == 'R') || Board.outOfBounds(i+k,j))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j));
+        
+        if(spate != 0)
+            for(int k = 0; k < ispate; k++)
+                if(Board.isBlackPiece(i-k,j) || (Board.board[i-k][j] == 'R') || Board.outOfBounds(i-k,j))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j));
+        
+        if(stanga != 0)
+            for(int k = 0; k < istanga; k++)
+                if(Board.isBlackPiece(i,j-k) || (Board.board[i][j-k] == 'R') || Board.outOfBounds(i,j-k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));
+        
+        if(dreapta != 0)
+            for(int k = 0; k < idreapta; k++)
+                if(Board.isBlackPiece(i,j+k) || (Board.board[i][j+k] == 'R') || Board.outOfBounds(i,j+k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));
+        
+        if(diag != 0){
+            for(int k = 0; k < idiag; k++)
+                if(Board.isBlackPiece(i+k,j+k) || (Board.board[i+k][j+k] == 'R') || Board.outOfBounds(i+k,j+k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
+            for(int k = 0; k < idiag; k++)
+                if(Board.isBlackPiece(i+k,j-k) || (Board.board[i+k][j-k] == 'R') || Board.outOfBounds(i+k,j-k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
+            for(int k = 0; k < idiag; k++)
+                if(Board.isBlackPiece(i-k,j-k) || (Board.board[i-k][j-k] == 'R') || Board.outOfBounds(i-k,j-k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
+            for(int k = 0; k < idiag; k++)
+                if(Board.isBlackPiece(i-k,j+k) || (Board.board[i-k][j+k] == 'R') || Board.outOfBounds(i-k,j+k))
+                    break;
+                else
+                    listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
+        }
+        
+        if(pf != 0)
+            if(!Board.isBlackPiece(i+1,j) && !Board.isWhitePiece(i+1, j) && !Board.outOfBounds(i+1,j))
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j));
+        
+        if(pd != 0){
+            if(Board.isWhitePiece(i+1, j+1) || (Board.board[i+1][j+1] != 'R'))
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j+1));
+            if(Board.isWhitePiece(i+1, j-1) || (Board.board[i+1][j-1] != 'R'))
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j-1));
+        }
+        
+        return listOfMoves;        
     }
     
 }
