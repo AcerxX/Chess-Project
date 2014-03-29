@@ -26,7 +26,7 @@ public class Main {
     public static BufferedReader reader;
     public static String cmd;
     public static Board board;
-    private static final int allowDebug = 0;
+    private static final int allowDebug = 1;
     private static boolean fileCreated = false;
     
     /**Conditii end game*/
