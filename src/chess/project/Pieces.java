@@ -11,7 +11,7 @@ package chess.project;
 import java.util.ArrayList;
 
 /**
- * @version 0.4.1a
+ * @version 0.4.2a
  * @author andre_000
  */
 public class Pieces {
@@ -104,7 +104,6 @@ public class Pieces {
         ArrayList<String> listOfMoves = new ArrayList<>();
         String howToMove;        
         howToMove = getValid(i, j);
-        System.out.println("LOGGER::HOW TO MOVE::"+howToMove);
         int fata = 0, spate = 0, diag = 0, pd = 0, stanga = 0, dreapta = 0, pf = 0, specialL = 0, ifata, ispate, idiag, ipd, ipf, istanga, idreapta, ispecL;
         
         /* Setare pozitii mutare */

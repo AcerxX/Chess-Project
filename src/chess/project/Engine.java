@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4.1a
+ * @version 0.4.2a
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -111,8 +111,6 @@ public class Engine {
         int[] ret = new int[2];
         ret[0] = pairs[l][0];
         ret[1] = pairs[l][1];
-        System.out.println("LOGGER::CHOSEN PIECE::"+Board.board[ret[0]][ret[0]]+"::FROM::"+Board.translatePosition(ret[0], ret[1]));
-        System.out.println("LOGGER::CHOSEN POSITION::"+ret[0]+" "+ ret[1]);
         return ret;
         
     }
