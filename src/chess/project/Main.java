@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.4a
+ * @version 0.4.1a
  * @author Alexandru MIHAI
  */
 public class Main {
@@ -48,7 +48,7 @@ public class Main {
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
-        System.out.println("**********Version 0.2.3a***********");
+        System.out.println("***********Version 0.4a************");
     }
     
     /**
@@ -98,7 +98,10 @@ public class Main {
                 Engine.setForced(false);            
             else if(Moves.checkIfMove(cmd)){
                 Moves.recordMove(cmd);
-                Moves.computeMove();
+                while(true){
+                    if(Moves.computeMove() == 1)
+                        break;
+                }
             }
             else if(cmd.indexOf("time") != -1){
                 //TODO Clock

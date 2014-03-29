@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4a
+ * @version 0.4.1a
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -99,19 +99,20 @@ public class Engine {
         int[][] pairs = new int[16][2];
         int k=0;
         
-        for(int i = 0; i < 12; i++)
-            for(int j = 0; j < 10; j++)
+        for(int i = 2; i < 10; i++)
+            for(int j = 2; j < 10; j++)
                 if(Board.isBlackPiece(i,j)){
                     pairs[k][0] = i;
                     pairs[k][1] = j;
                     k++;
                 }
         
-        k = generator.nextInt(17);
+        int l = generator.nextInt(k);
         int[] ret = new int[2];
-        ret[0] = pairs[k][0];
-        ret[1] = pairs[k][1];
-        
+        ret[0] = pairs[l][0];
+        ret[1] = pairs[l][1];
+        System.out.println("LOGGER::CHOSEN PIECE::"+Board.board[ret[0]][ret[0]]+"::FROM::"+Board.translatePosition(ret[0], ret[1]));
+        System.out.println("LOGGER::CHOSEN POSITION::"+ret[0]+" "+ ret[1]);
         return ret;
         
     }

@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4a
+ * @version 0.4.1a
  * @author Selennae
  */
 public class Moves {
@@ -55,7 +55,7 @@ public class Moves {
             
             int v[][] = Board.translatePosition(cmd);
             int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
-            int i = 11 - recI, j = 9 - recJ, k = 11 - recK, l = 9 - recL;
+            int i = 11 - recI, j = 11 - recJ, k = 11 - recK, l = 11 - recL;
             if(Board.board[k][l] == -1){
                 Engine.resign();
             }else if(Board.board[i][j] != 'P' &&
@@ -98,13 +98,21 @@ public class Moves {
     /**
      * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
      */
-    static void computeMove(){
+    static int computeMove(){
         int[] randomPiece = Engine.getRandomPiece();
-        ArrayList<String> moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
+        ArrayList<String> moves;
+        
+        if(Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty())
+            return -1;
+        moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
+        
         Random generator = new Random();
-        int i = generator.nextInt(moves.size()+1);
+        //System.out.println("LOGGER::SIZE::"+moves.size());
+        int i = generator.nextInt(moves.size());
+        //System.out.println("LOGGER::VALUE OF::"+i+"::"+moves.get(i));
         recordMove(moves.get(i));
         System.out.println("move "+moves.get(i));
+        return 1;
     }
     
     /**
@@ -115,9 +123,9 @@ public class Moves {
      */
     static boolean checkIfMove(String cmd){
         for(int i=2;i<10;i++)
-            for(int j=1;j<9;j++)
+            for(int j=2;j<10;j++)
                 for(int k=2;k<10;k++)
-                    for(int l=1;l<9;l++)
+                    for(int l=2;l<10;l++)
                         if(cmd.equals(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
                             receivedMove = Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
                             return true;
