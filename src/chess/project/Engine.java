@@ -86,4 +86,16 @@ public class Engine {
         }
     }
     
+    /**
+     * Metoda checkIfCheck()
+     * 
+     * Verifica daca este sah.
+     * 
+     * @return 
+     */
+    static boolean checkIfCheck(){
+        
+        return false;
+    }
+    
 }

@@ -8,6 +8,8 @@
 
 package chess.project;
 
+import java.util.ArrayList;
+
 /**
  *
  * @version 0.3.1a Etapa 1 FINAL
@@ -146,5 +148,16 @@ public class Moves {
         aux = Board.board[v[1][0]][v[1][1]];
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
+    }
+    
+    /**
+     * Metoda getAllMoves()
+     * 
+     * Returneaza o lista cu toate miscarile posibile.
+     * 
+     * @return 
+     */
+    static ArrayList<String> getAllMoves(){
+         return null;        
     }
 }
