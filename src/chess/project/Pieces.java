@@ -16,16 +16,15 @@ public class Pieces {
     private static String type;
     
     /**
-     * Seteaza piesa. POSIBIL SA DISPARA IN VIITORUL APROPIAT!
-     * 
-     * LEGAL DECLARATIONS:
-     * - pion
-     * - dama
-     * - rege
-     * - nebun
-     * - tura
-     * - cal
-     * 
+     * Seteaza piesa. POSIBIL SA DISPARA IN VIITORUL APROPIAT!<BR>
+     * <BR>
+     * LEGAL DECLARATIONS:<BR>
+     * - pion<BR>
+     * - dama<BR>
+     * - rege<BR>
+     * - nebun<BR>
+     * - tura<BR>
+     * - cal<BR>
      * @param i
      * @param j 
      */    
@@ -59,17 +58,18 @@ public class Pieces {
     }
     
     /**
-     * Returneaza ca string posibilitatile de mutare a piesei de pe pozitia i si j sub forma de string. 
-     * POSIBILITATI:
-     *  - 1fata => poate fi mutata maxim o pozitie in fata;
-     *  - 1fd => poate fi mutata maxim o pozitie pe diagonala in fata;
-     *  - 7fata => poate fi mutata maxim 7 pozitii in fata;
-     *  - 7spate => poate fi mutata maxim 7 pozitii in spate;
-     *  - 7diag => poate fi mutata maxim 7 pozitii pe diagonala oriunde;
-     *  - 7stanga => poate fi mutata maxim 7 pozitii in stanga;
-     *  - 7dreapta => poate fi mutata maxim 7 pozitii in dreapta;
-     *  - specialL => este cal si se muta in forma de L;
-     *  - 1fata, 1diag, 1spate, 1stanga, 1dreapta => acelasi lucru ca cele de mai sus, difera doar numarul de pozitii.
+     * Returneaza ca string posibilitatile de mutare a piesei de pe pozitia i si j sub forma de string. <BR>
+     * 
+     * POSIBILITATI:<BR>
+     *  - pf => (PION) poate fi mutata maxim o pozitie in fata;<BR>
+     *  - fd => (PION) poate fi mutata maxim o pozitie pe diagonala in fata;<BR>
+     *  - 7fata => poate fi mutata maxim 7 pozitii in fata;<BR>
+     *  - 7spate => poate fi mutata maxim 7 pozitii in spate;<BR>
+     *  - 7diag => poate fi mutata maxim 7 pozitii pe diagonala oriunde;<BR>
+     *  - 7stanga => poate fi mutata maxim 7 pozitii in stanga;<BR>
+     *  - 7dreapta => poate fi mutata maxim 7 pozitii in dreapta;<BR>
+     *  - specialL => este cal si se muta in forma de L;<BR>
+     *  - 1fata, 1diag, 1spate, 1stanga, 1dreapta => acelasi lucru ca cele de mai sus, difera doar numarul de pozitii.<BR>
      * 
      * @param i
      * @param j
@@ -79,7 +79,7 @@ public class Pieces {
         
         setType(i,j);        
         switch (Pieces.type){
-            case "pion": return "1fata, 1fd";
+            case "pion": return "pf, pd";
             case "dama": return "7fata, 7diag, 7spate, 7stanga, 7dreapta";
             case "rege": return "1fata, 1diag, 1spate, 1stanga, 1dreapta";
             case "nebun": return "7diag";

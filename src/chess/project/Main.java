@@ -52,8 +52,8 @@ public class Main {
     }
     
     /**
-     * Citeste comenzile trimise de Winboard si le redirectioneaza catre metoda corecta pentru a fi procesate.
-     * Scrie toate comenzile primite in fisierul debug_engine.txt, prin modificarea variabilei allowDebug.
+     * Citeste comenzile trimise de Winboard si le redirectioneaza catre metoda corecta pentru a fi procesate.<BR>
+     * Scrie toate comenzile primite in fisierul debug_engine.txt, prin modificarea variabilei allowDebug.<BR>
      * 
      * @throws IOException 
      */

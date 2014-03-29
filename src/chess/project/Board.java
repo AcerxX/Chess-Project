@@ -20,7 +20,7 @@ public class Board {
     public static String[][] boardOfMoves;
     
     /**
-     * Reseteaza matricea pieselor.
+     * Reseteaza matricea pieselor.<BR>
      * TODO MORE in etapa 2
      */
     @SuppressWarnings("empty-statement")
@@ -45,7 +45,7 @@ public class Board {
     }
 
     /**
-     * Initializeaza toate componentele.
+     * Initializeaza toate componentele.<BR>
      * Cauza principala in cazul intalnirii erorii de null pointer exception!
      */
     static void initAll() {
@@ -92,11 +92,11 @@ public class Board {
     }
     
    /**
-    * Returneaza coordonatele mutarii primite ca parametru:
-    * - v[0][0] --> coordonata i de pe care a plecat;
-    * - v[0][1] --> coordonata j de pe care a plecat;
-    * - v[1][0] --> coordonata i pe care a ajuns;
-    * - v[1][1] --> coordonata j pe care a ajuns;
+    * Returneaza coordonatele mutarii primite ca parametru:<BR>
+    * - v[0][0] --> coordonata i de pe care a plecat;<BR>
+    * - v[0][1] --> coordonata j de pe care a plecat;<BR>
+    * - v[1][0] --> coordonata i pe care a ajuns;<BR>
+    * - v[1][1] --> coordonata j pe care a ajuns;<BR>
     * 
     * @param position
     * @return int[][]
@@ -118,8 +118,8 @@ public class Board {
     }
     
     /**
-     * Returneaza un vector ce are pe prima pozitie continutul locului de unde a plecat piesa,
-     * iar pe a doua pozitie continutul locului unde a ajuns piesa.
+     * Returneaza un vector ce are pe prima pozitie continutul locului de unde a plecat piesa,<BR>
+     * iar pe a doua pozitie continutul locului unde a ajuns piesa.<BR>
      * 
      * @param position
      * @return 
@@ -136,6 +136,18 @@ public class Board {
                             v[1] = board[k][l];
                         }
         return v;                            
+    }
+
+    static boolean isWhitePiece(int i, int j) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static boolean isPiece(int i, int j) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static boolean isBlackPiece(int i, int j) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

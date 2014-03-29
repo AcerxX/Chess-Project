@@ -74,7 +74,7 @@ public class Engine {
         else
         {
             Clock.stopped(false);
-            theMove = Moves.computeMove( x, y);
+            //theMove = Moves.computeMove( x, y);
             if (Moves.isLegal(theMove))
                 System.out.println("move " + theMove);
         }
