@@ -30,7 +30,7 @@ public class Engine {
         switch (turn) {
             case "white":
                 color = "white";
-                Moves.computeMove("WE ARE THUNDER!");
+                Moves.computeMove();
                 break;
             case "black":
                 color = "black";

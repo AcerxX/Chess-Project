@@ -98,7 +98,7 @@ public class Main {
                 Engine.setForced(false);            
             else if(Moves.checkIfMove(cmd)){
                 Moves.recordMove(cmd);
-                Moves.computeMove(cmd);                     
+                Moves.computeMove();
             }
             else if(cmd.indexOf("time") != -1){
                 //TODO Clock

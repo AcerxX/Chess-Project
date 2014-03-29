@@ -9,6 +9,7 @@
 package chess.project;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -48,7 +49,7 @@ public class Moves {
      * 
      * @param cmd 
      */
-    static void computeMove(String cmd){
+    /*static void computeMove(String cmd){
         
         if(Engine.color == "black"){
             
@@ -92,6 +93,45 @@ public class Moves {
             }else
                 Engine.resign();
         }
+    }*/
+    
+    /**
+     * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
+     */
+    static void computeMove(){
+        int[] randomPiece = getRandomPiece();
+        ArrayList<String> moves = getAllMoves(randomPiece[0], randomPiece[1]);
+        Random generator = new Random();
+        int i = generator.nextInt(moves.size()+1);
+        recordMove(moves.get(i));
+        System.out.println("move "+moves.get(i));
+    }
+    
+    /**
+     * Returneaza coordonatele i si j ale unei piese NEAGRE random de pe tabla. 
+     * @return 
+     */
+    static int[] getRandomPiece(){
+        
+        Random generator = new Random();
+        int[][] pairs = new int[16][2];
+        int k=0;
+        
+        for(int i = 0; i < 12; i++)
+            for(int j = 0; j < 10; j++)
+                if(Board.isBlackPiece(i,j)){
+                    pairs[k][0] = i;
+                    pairs[k][1] = j;
+                    k++;
+                }
+        
+        k = generator.nextInt(17);
+        int[] ret = new int[2];
+        ret[0] = pairs[k][0];
+        ret[1] = pairs[k][1];
+        
+        return ret;
+        
     }
     
     /**
@@ -122,14 +162,12 @@ public class Moves {
      */
     static void recordMove(String cmd) {
         int v[][] = Board.translatePosition(cmd);
-        int aux;
-        aux = Board.board[v[1][0]][v[1][1]];
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
     }
     
     /**
-     * Returneaza o lista cu toate miscarile (in coord xboard) posibile (NU NEAPARAT LEGALE) pentru o pozitie i si j.
+     * Returneaza o lista cu toate miscarile (in coord xboard) posibile SI LEGALE pentru o pozitie i si j.
      * 
      * @return 
      */
@@ -167,43 +205,43 @@ public class Moves {
         
         if(spate != 0)
             for(int k = 0; k < ispate; k++)
-                if(Board.isBlackPiece(i-k,j))
+                if(Board.isBlackPiece(i-k,j) || (Board.board[i-k][j] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j));
         
         if(stanga != 0)
             for(int k = 0; k < istanga; k++)
-                if(Board.isBlackPiece(i,j-k))
+                if(Board.isBlackPiece(i,j-k) || (Board.board[i][j-k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));
         
         if(dreapta != 0)
             for(int k = 0; k < idreapta; k++)
-                if(Board.isBlackPiece(i,j+k))
+                if(Board.isBlackPiece(i,j+k) || (Board.board[i][j+k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));
         
         if(diag != 0){
             for(int k = 0; k < idiag; k++)
-                if(Board.isBlackPiece(i+k,j+k))
+                if(Board.isBlackPiece(i+k,j+k) || (Board.board[i+k][j+k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
             for(int k = 0; k < idiag; k++)
-                if(Board.isBlackPiece(i+k,j-k))
+                if(Board.isBlackPiece(i+k,j-k) || (Board.board[i+k][j-k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
             for(int k = 0; k < idiag; k++)
-                if(Board.isBlackPiece(i-k,j-k))
+                if(Board.isBlackPiece(i-k,j-k) || (Board.board[i-k][j-k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
             for(int k = 0; k < idiag; k++)
-                if(Board.isBlackPiece(i-k,j+k))
+                if(Board.isBlackPiece(i-k,j+k) || (Board.board[i-k][j+k] == 'R'))
                     break;
                 else
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
@@ -214,9 +252,9 @@ public class Moves {
                 listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j));
         
         if(pd != 0){
-            if(Board.isWhitePiece(i+1, j+1))
+            if(Board.isWhitePiece(i+1, j+1) || (Board.board[i+1][j+1] != 'R'))
                 listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j+1));
-            if(Board.isWhitePiece(i+1, j-1))
+            if(Board.isWhitePiece(i+1, j-1) || (Board.board[i+1][j-1] != 'R'))
                 listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j-1));
         }
         
