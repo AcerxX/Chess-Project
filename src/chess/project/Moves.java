@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4.2a
+ * @version 0.4.3a
  * @author Selennae
  */
 public class Moves {
@@ -106,7 +106,7 @@ public class Moves {
             return -1;
         moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
         
-        Random generator = new Random();        
+        Random generator = new Random(System.currentTimeMillis());        
         int i = generator.nextInt(moves.size());        
         recordMove(moves.get(i));
         System.out.println("move "+moves.get(i));
