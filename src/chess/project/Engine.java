@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4.3a
+ * @version 0.4.4a
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -96,7 +96,7 @@ public class Engine {
      */
     static int[] getRandomPiece() throws IOException{
         
-        Random generator = new Random();
+        Random generator = new Random(System.currentTimeMillis());
         int[][] pairs = new int[16][2];
         int k=0;
         
