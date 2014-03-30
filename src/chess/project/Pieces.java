@@ -132,6 +132,8 @@ public class Pieces {
             for(int k = 1; k < ifata; k++)
                     if((!Board.isBlackPiece(i+k,j)) && (Board.board[i+k][j] != 'R') && (!Board.outOfBounds(i+k,j))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j));
+                        if(Board.isWhitePiece(i+k, j))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in fata mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j));
                     }
                     else
@@ -141,6 +143,8 @@ public class Pieces {
             for(int k = 1; k < ispate; k++)
                     if((!Board.isBlackPiece(i-k,j)) && (Board.board[i-k][j] != 'R') && (!Board.outOfBounds(i-k,j))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j));
+                        if(Board.isWhitePiece(i-k, j))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in spate mutarea::"+(Board.translatePosition(i, j) + Board.translatePosition(i-k, j)));
                     }
                     else
@@ -149,7 +153,9 @@ public class Pieces {
         if(stanga != 0)
             for(int k = 1; k < istanga; k++)
                     if((!Board.isBlackPiece(i,j-k)) && (Board.board[i][j-k] != 'R') && (!Board.outOfBounds(i,j-k))){
-                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));      
+                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));
+                        if(Board.isWhitePiece(i, j-k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in stanga mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i, j-k));
                     }
                     else
@@ -158,7 +164,9 @@ public class Pieces {
         if(dreapta != 0)
             for(int k = 1; k < idreapta; k++)
                     if((!Board.isBlackPiece(i,j+k)) && (Board.board[i][j+k] != 'R') && (!Board.outOfBounds(i,j+k))){
-                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));           
+                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));
+                        if(Board.isWhitePiece(i, j+k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in dreapta mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i, j+k));
                     }
                     else
@@ -168,6 +176,8 @@ public class Pieces {
             for(int k = 1; k < idiag; k++)
                     if((!Board.isBlackPiece(i+k,j+k)) && (Board.board[i+k][j+k] != 'R') && (!Board.outOfBounds(i+k,j+k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
+                        if(Board.isWhitePiece(i+k, j+k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
                     }
                     else
@@ -175,6 +185,8 @@ public class Pieces {
             for(int k = 1; k < idiag; k++)
                     if((!Board.isBlackPiece(i+k,j-k)) && (Board.board[i+k][j-k] != 'R') && (!Board.outOfBounds(i+k,j-k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
+                        if(Board.isWhitePiece(i+k, j-k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
                     }
                     else
@@ -182,6 +194,8 @@ public class Pieces {
             for(int k = 1; k < idiag; k++)
                     if((!Board.isBlackPiece(i-k,j-k)) && (Board.board[i-k][j-k] != 'R') && (!Board.outOfBounds(i-k,j-k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
+                        if(Board.isWhitePiece(i-k, j-k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
                     }
                     else
@@ -189,6 +203,8 @@ public class Pieces {
             for(int k = 1; k < idiag; k++)
                     if((!Board.isBlackPiece(i-k,j+k)) && (Board.board[i-k][j+k] != 'R') && (!Board.outOfBounds(i-k,j+k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
+                        if(Board.isWhitePiece(i-k, j+k))
+                            break;
                         Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
                     }
                     else
