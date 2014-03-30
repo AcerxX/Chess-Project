@@ -153,6 +153,10 @@ public class Board {
     }
 
     static boolean isBlackPiece(int i, int j) {
+        if((i<0) || (j<0))
+            return true;
+        if((i>11) || (j>11))
+            return true;
         return board[i][j] == 'p' ||
                board[i][j] == 't' ||
                board[i][j] == 'n' ||

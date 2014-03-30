@@ -8,6 +8,7 @@
 
 package chess.project;
 
+import static java.sql.Types.NULL;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -106,7 +107,7 @@ public class Moves {
             return -1;
         moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
         
-        Random generator = new Random(System.currentTimeMillis());        
+        Random generator = new Random();        
         int i = generator.nextInt(moves.size());        
         recordMove(moves.get(i));
         System.out.println("move "+moves.get(i));
@@ -124,7 +125,7 @@ public class Moves {
             for(int j=2;j<10;j++)
                 for(int k=2;k<10;k++)
                     for(int l=2;l<10;l++)
-                        if(cmd.equals(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l])){
+                        if(cmd.indexOf(Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l]) != -1){
                             receivedMove = Board.boardOfMoves[i][j]+Board.boardOfMoves[k][l];
                             return true;
                         }
@@ -140,8 +141,19 @@ public class Moves {
      * @param cmd 
      */
     static void recordMove(String cmd) {
-        int v[][] = Board.translatePosition(cmd);
+        int v[][] = Board.translatePosition(cmd.charAt(0)+""+cmd.charAt(1)+""+cmd.charAt(2)+""+cmd.charAt(3));
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
+        if(cmd.length() == 5){
+            if(Board.isBlackPiece(v[1][0], v[1][1]))
+                Board.board[v[1][0]][v[1][1]] = 'q';
+            if(Board.isWhitePiece(v[1][0], v[1][1]))
+                Board.board[v[1][0]][v[1][1]] = 'Q';
+        }
+        for(int i=0;i<12;i++){
+            for(int j=0; j<12;j++)
+                System.out.print((char)Board.board[i][j]+ " ");
+            System.out.println();
+        }
     }
 }
