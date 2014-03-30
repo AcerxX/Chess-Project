@@ -9,25 +9,21 @@
 package chess.project;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.4.1a
+ * @version 0.5b
  * @author Alexandru MIHAI
  */
 public class Main {
     
     /**Variabile generale*/
-    public static final String engineName = "Thunder Chickens Chess Engine v0.5a";
+    public static final String engineName = "Thunder Chickens Chess Engine v0.5b";
     public static BufferedReader reader;
     public static String cmd;
     public static Board board;
-    private static final int allowDebug = 1;
-    private static boolean fileCreated = false;
     
     /**Conditii end game*/
     public static int iCheckmate;
@@ -48,7 +44,7 @@ public class Main {
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
-        System.out.println("***********Version 0.4a************");
+        System.out.println("***********Version 0.5b************");
     }
     
     /**
@@ -57,33 +53,38 @@ public class Main {
      * 
      * @throws IOException 
      */
-    public static void getCmd() throws IOException{
+    public static void getCmd() throws IOException{ 
         
-            
-            int m = 0;
             Logger.create();
             
         while(true){
-            cmd = reader.readLine();
-       
+            cmd = reader.readLine();       
             Logger.write("WINBOARD::"+cmd);                
             
+            /*Quit Game*/
             if(cmd.startsWith("quit")){
                 Logger.close();
                 System.exit(0);
-            }            
+            }
+            /*New Game*/
             else if(cmd.equals("new"))
                 Board.newGame();
+            /*XBoard*/
             else if(cmd.indexOf("xboard") != -1)
                 System.out.println("feature san=0 time=1 draw=1 myname=\""+engineName+"\" colors=1 done=1");
+            /*White*/
             else if(cmd.indexOf("white") != -1)
                 Engine.setEngineColor("white");
+            /*Black*/
             else if(cmd.indexOf("black") != -1)
                 Engine.setEngineColor("black");
+            /*Force*/
             else if(cmd.indexOf("force") != -1)
                 Engine.setForced(true);
+            /*Go*/
             else if(cmd.indexOf("go") != -1)
-                Engine.setForced(false);            
+                Engine.setForced(false); 
+            /*Move Received*/
             else if(Moves.checkIfMove(cmd)){
                 Moves.recordMove(cmd);
                 while(true){
@@ -91,6 +92,7 @@ public class Main {
                         break;
                 }
             }
+            /*Time*/
             else if(cmd.indexOf("time") != -1){
                 //TODO Clock
             }

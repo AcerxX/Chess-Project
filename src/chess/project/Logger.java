@@ -14,6 +14,7 @@ import java.io.IOException;
 
 /**
  *
+ * @version 0.5b 
  * @author alexa_000
  */
 public class Logger {
@@ -39,9 +40,18 @@ public class Logger {
         debug.newLine();
         debug.flush();
     }
+    
+    static void writeNNL(String cmd) throws IOException{
+        debug.write(cmd);
+    }
 
     static void close() throws IOException {
         debug.close();
+    }
+
+    static void newLine() throws IOException {
+        debug.newLine();
+        debug.flush();
     }
     
 }

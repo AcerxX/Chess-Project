@@ -9,11 +9,12 @@
 package chess.project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
  *
- * @version 0.4.4a
+ * @version 0.5b
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -33,7 +34,10 @@ public class Engine {
         switch (turn) {
             case "white":
                 color = "white";
-                Moves.computeMove();
+                while(true){
+                    if(Moves.computeMove() == 1)
+                        break;
+                }
                 break;
             case "black":
                 color = "black";
@@ -85,27 +89,84 @@ public class Engine {
      * 
      * @return 
      */
-    static boolean checkIfCheck(){
+    static boolean checkIfCheck() throws IOException{
+        int[][] v;
+        ArrayList<String> moves;
         
+        /* Verificam pentru fiecare piesa de culoare diferita decat a engineului daca exista vreo mutare care sa cada pe regele nostru */
+        for(int i = 2; i < 10; i++){
+            for(int j = 2; j < 10; j++){
+                if("black".equals(color)){
+                    color = "white";
+                    if(Board.isWhitePiece(i, j)){
+                        Logger.write("LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
+                        moves = Pieces.getAllMoves(i, j);
+                        
+                        if(moves.isEmpty()){
+                            color = "black";
+                            continue;
+                        }
+                        for(int k = 0; k < moves.size(); k++){
+                            v = Board.translatePosition(moves.get(k));
+                            if(Board.board[v[1][0]][v[1][1]] == 'r'){
+                                Logger.write("LOGGER::Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
+                                color = "black";
+                                return true;
+                            }
+                        }                       
+                    }
+                    color = "black";
+                }else{
+                    color = "black";
+                    if(Board.isBlackPiece(i, j)){
+                        Logger.write("LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
+                        moves = Pieces.getAllMoves(i, j);
+                        if(moves.isEmpty()){
+                            color = "white";
+                            continue;
+                        }
+                        for(int k = 0; k < moves.size(); k++){
+                            v = Board.translatePosition(moves.get(k));
+                            if(Board.board[v[1][0]][v[1][1]] == 'R'){
+                                Logger.write("LOGGER::Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
+                                color = "white";
+                                return true;
+                            }
+                                
+                        }                       
+                    }
+                    color = "white";
+                }
+            }
+        }
+        Logger.write("LOGGER::Nu am gasit sah!");
         return false;
     }
     
     /**
-     * Returneaza coordonatele i si j ale unei piese NEAGRE random de pe tabla. 
+     * Returneaza coordonatele i si j ale unei piese random de pe tabla. 
      * @return 
      */
     static int[] getRandomPiece() throws IOException{
         
-        Random generator = new Random(System.currentTimeMillis());
+        Random generator = new Random();
         int[][] pairs = new int[16][2];
         int k=0;
         
         for(int i = 2; i < 10; i++)
             for(int j = 2; j < 10; j++)
-                if(Board.isBlackPiece(i,j)){
-                    pairs[k][0] = i;
-                    pairs[k][1] = j;
-                    k++;
+                if("black".equals(color)){
+                    if(Board.isBlackPiece(i,j)){
+                        pairs[k][0] = i;
+                        pairs[k][1] = j;
+                        k++;
+                    }
+                }else{
+                    if(Board.isWhitePiece(i,j)){
+                        pairs[k][0] = i;
+                        pairs[k][1] = j;
+                        k++;
+                    }
                 }
         
         int l = generator.nextInt(k);

@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.4.4a
+ * @version 0.5b
  * @author Selennae
  */
 public class Moves {
@@ -23,6 +23,8 @@ public class Moves {
      static String theMove;
      static String receivedMove;
      static int iW = 8, jW = 5, kW = 6, lW = 5;
+     static String specialMove;
+     static int specialPiece;
      
     /**
      * Verifica daca mutarea este legala
@@ -49,16 +51,34 @@ public class Moves {
      * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
      */
     static int computeMove() throws IOException{
+        
+        /* Declarari generale */
         int[] randomPiece = Engine.getRandomPiece();
         ArrayList<String> moves;
+        int[][] tempBoard;
         
-        if(Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty())
+        /* Verificam daca am primit vreo mutare, in caz contrar returnam -1 pentru a fi reapaelata functia in main */
+        if(Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty()){
+            Logger.write("LOGGER::Moves.java::Nu pot face mutarea!");
             return -1;
+        }                   
+        
         moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
         
-        Random generator = new Random(System.currentTimeMillis());        
-        int i = generator.nextInt(moves.size());        
+        Random generator = new Random();        
+        int i = generator.nextInt(moves.size()); 
+        
+        tempBoard = Board.board;
         recordMove(moves.get(i));
+        Logger.write("LOGGER::Moves.java::Incerc mutarea::"+moves.get(i));
+        
+        /* Verificam daca dupa efetuarea mutarii suntem in sah; daca da dam undo la mutare si cautam alta */
+        if(Engine.checkIfCheck()){
+            revertMove(moves.get(i));
+            return -1;
+        }
+        
+        Logger.write("LOGGER::Moves.java::Am facut mutarea!");
         System.out.println("move "+moves.get(i));
         return 1;
     }
@@ -89,20 +109,46 @@ public class Moves {
      * 
      * @param cmd 
      */
-    static void recordMove(String cmd) {
+    static void recordMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0)+""+cmd.charAt(1)+""+cmd.charAt(2)+""+cmd.charAt(3));
+        specialPiece = Board.board[v[1][0]][v[1][1]];
+        
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
+        
         if(cmd.length() == 5){
+            specialMove = cmd;
             if(Board.isBlackPiece(v[1][0], v[1][1]))
-                Board.board[v[1][0]][v[1][1]] = 'q';
+                Board.board[v[1][0]][v[1][1]] = 'd';
             if(Board.isWhitePiece(v[1][0], v[1][1]))
-                Board.board[v[1][0]][v[1][1]] = 'Q';
+                Board.board[v[1][0]][v[1][1]] = 'D';
         }
         for(int i=0;i<12;i++){
             for(int j=0; j<12;j++)
-                System.out.print((char)Board.board[i][j]+ " ");
-            System.out.println();
+                Logger.writeNNL((char)Board.board[i][j]+ " ");
+            Logger.newLine();
+        }
+    }
+
+    /**
+     * Modifica matricea engineului pentru a da undo la o mutare primisa ca parametru.
+     * @param cmd
+     * @throws IOException 
+     */
+    private static void revertMove(String cmd) throws IOException {
+        int v[][] = Board.translatePosition(cmd.charAt(0)+""+cmd.charAt(1)+""+cmd.charAt(2)+""+cmd.charAt(3));
+        Board.board[v[0][0]][v[0][1]] = Board.board[v[1][0]][v[1][1]];
+        Board.board[v[1][0]][v[1][1]] = specialPiece;
+        if(cmd.equals(specialMove)){
+            if(Board.isBlackPiece(v[0][0], v[0][1]))
+                Board.board[v[0][0]][v[0][1]] = 'p';
+            if(Board.isWhitePiece(v[0][0], v[0][1]))
+                Board.board[v[0][0]][v[0][1]] = 'P';
+        }
+        for(int i=0;i<12;i++){
+            for(int j=0; j<12;j++)
+                Logger.writeNNL((char)Board.board[i][j]+ " ");
+            Logger.newLine();
         }
     }
 }

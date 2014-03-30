@@ -10,7 +10,7 @@ package chess.project;
 
 /**
  *
- * @version 0.4.1a
+ * @version 0.5b
  * @author Alexandru MIHAI
  */
 public class Board {    
@@ -140,7 +140,17 @@ public class Board {
         return v;                            
     }
 
+    /**
+     * Returneaza true daca exista vreo piesa alba pe pozitia trimisa ca parametru.
+     * @param i
+     * @param j
+     * @return 
+     */
     static boolean isWhitePiece(int i, int j) {
+        if((i<0) || (j<0))
+            return true;
+        if((i>11) || (j>11))
+            return true;
         return (board[i][j] == 'P') ||
                (board[i][j] == 'T') ||
                (board[i][j] == 'N') ||
@@ -149,10 +159,22 @@ public class Board {
                (board[i][j] == 'R');
     }
 
+    /**
+     * Returneaza true daca exista o piesa pe pozitia trimisa ca parametru.
+     * @param i
+     * @param j
+     * @return 
+     */
     static boolean isPiece(int i, int j) {
         return isWhitePiece(i,j) || isBlackPiece(i,j);
     }
 
+    /**
+     * Returneaza true daca exista vreo piesa neagra pe pozitia trimisa ca parametru.
+     * @param i
+     * @param j
+     * @return 
+     */
     static boolean isBlackPiece(int i, int j) {
         if((i<0) || (j<0))
             return true;
@@ -166,6 +188,12 @@ public class Board {
                (board[i][j] == 'r');
     }
 
+    /**
+     * Returneaza true daca pozitia trimisa ca parametru este in afara tablei.
+     * @param i
+     * @param j
+     * @return 
+     */
     static boolean outOfBounds(int i, int j) {
         return (board[i][j] == -1);
     }
