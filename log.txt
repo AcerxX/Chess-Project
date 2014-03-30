@@ -1,0 +1,186 @@
+WINBOARD::xboard
+-------------
+WINBOARD::new
+-------------
+WINBOARD::a2a4
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::b2b4
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::c2c4
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::d2d4
+-------------
+LOGGER::Engine.java::Am ales piesa::d
+-------------
+LOGGER::Pieces.java::Am primit miscarile:fata diag spate stanga dreapta
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::e2e4
+-------------
+LOGGER::Engine.java::Am ales piesa::t
+-------------
+LOGGER::Pieces.java::Am primit miscarile:stanga dreapta fata spate
+-------------
+LOGGER::Engine.java::Am ales piesa::n
+-------------
+LOGGER::Pieces.java::Am primit miscarile:diag
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::f2f4
+-------------
+LOGGER::Engine.java::Am ales piesa::n
+-------------
+LOGGER::Pieces.java::Am primit miscarile:diag
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::g2g4
+-------------
+LOGGER::Engine.java::Am ales piesa::t
+-------------
+LOGGER::Pieces.java::Am primit miscarile:stanga dreapta fata spate
+-------------
+LOGGER::Engine.java::Am ales piesa::n
+-------------
+LOGGER::Pieces.java::Am primit miscarile:diag
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::h2h4
+-------------
+LOGGER::Engine.java::Am ales piesa::d
+-------------
+LOGGER::Pieces.java::Am primit miscarile:fata diag spate stanga dreapta
+-------------
+LOGGER::Engine.java::Am ales piesa::r
+-------------
+LOGGER::Pieces.java::Am primit miscarile:not implemented
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::a1a3
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::a3h3
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::h3a3
+-------------
+LOGGER::Engine.java::Am ales piesa::t
+-------------
+LOGGER::Pieces.java::Am primit miscarile:stanga dreapta fata spate
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::a3h3
+-------------
+LOGGER::Engine.java::Am ales piesa::t
+-------------
+LOGGER::Pieces.java::Am primit miscarile:stanga dreapta fata spate
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::h3a3
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::a3h3
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf, pd
+-------------
+WINBOARD::h3a3
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::a3h3
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::h3a3
+-------------
+LOGGER::Engine.java::Am ales piesa::t
+-------------
+LOGGER::Pieces.java::Am primit miscarile:stanga dreapta fata spate
+-------------
+LOGGER::Engine.java::Am ales piesa::c
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+LOGGER::Pieces.java::Am primit miscarile:specialL
+-------------
+WINBOARD::quit
+-------------

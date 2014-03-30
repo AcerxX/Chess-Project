@@ -8,6 +8,7 @@
 
 package chess.project;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -28,7 +29,7 @@ public class Engine {
      * 
      * @param turn 
      */
-    static void setEngineColor(String turn) {
+    static void setEngineColor(String turn) throws IOException {
         switch (turn) {
             case "white":
                 color = "white";
@@ -93,9 +94,9 @@ public class Engine {
      * Returneaza coordonatele i si j ale unei piese NEAGRE random de pe tabla. 
      * @return 
      */
-    static int[] getRandomPiece(){
+    static int[] getRandomPiece() throws IOException{
         
-        Random generator = new Random(System.currentTimeMillis());
+        Random generator = new Random();
         int[][] pairs = new int[16][2];
         int k=0;
         
@@ -111,6 +112,7 @@ public class Engine {
         int[] ret = new int[2];
         ret[0] = pairs[l][0];
         ret[1] = pairs[l][1];
+        Logger.write("LOGGER::Engine.java::Am ales piesa::"+(char)Board.board[ret[0]][ret[1]]);
         return ret;
         
     }

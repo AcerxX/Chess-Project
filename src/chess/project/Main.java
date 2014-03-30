@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
 public class Main {
     
     /**Variabile generale*/
-    public static final String engineName = "Thunder Chickens Chess Engine v.01";
+    public static final String engineName = "Thunder Chickens Chess Engine v0.5a";
     public static BufferedReader reader;
     public static String cmd;
     public static Board board;
@@ -59,29 +59,17 @@ public class Main {
      */
     public static void getCmd() throws IOException{
         
-            BufferedWriter debug = null;
+            
             int m = 0;
+            Logger.create();
             
         while(true){
             cmd = reader.readLine();
-            
-            
-            //TODO Optimizations
-            if(allowDebug == 1){
-                if(!fileCreated){
-                    debug = new BufferedWriter(new FileWriter("debug_engine.txt"));
-                    fileCreated = true;
-                }
-                debug.write(cmd);
-                debug.newLine();
-                debug.flush();
-                debug.write("-------------");
-                debug.newLine();
-                debug.flush();
-            }
+       
+            Logger.write("WINBOARD::"+cmd);                
             
             if(cmd.startsWith("quit")){
-                //debug.close();
+                Logger.close();
                 System.exit(0);
             }            
             else if(cmd.equals("new"))

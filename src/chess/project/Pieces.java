@@ -8,6 +8,7 @@
 
 package chess.project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -81,11 +82,11 @@ public class Pieces {
         
         setType(i,j);        
         switch (Pieces.type){
-            case "pion": return "pf, pd";
-            case "dama": return "7fata, 7diag, 7spate, 7stanga, 7dreapta";
+            case "pion": return "pf pd";
+            case "dama": return "fata diag spate stanga dreapta";
             case "rege": return "not implemented";
-            case "nebun": return "7diag";
-            case "tura": return "7stanga, 7dreapta, 7fata, 7spate";
+            case "nebun": return "diag";
+            case "tura": return "stanga dreapta fata spate";
             case "cal": return "specialL";
             //default: Logger.write("Wrong type: "+type); 
         }
@@ -98,57 +99,66 @@ public class Pieces {
      * 
      * @return 
      */
-    static ArrayList<String> getAllMoves(int i, int j){
+    static ArrayList<String> getAllMoves(int i, int j) throws IOException{
         
         /* Declarari generale */
         ArrayList<String> listOfMoves = new ArrayList<>();
         String howToMove;        
         howToMove = getValid(i, j);
+        Logger.write("LOGGER::Pieces.java::Am primit miscarile:"+howToMove+"::pentru piesa::"+(char)Board.board[i][j]);
         int fata = 0, spate = 0, diag = 0, pd = 0, stanga = 0, dreapta = 0, pf = 0, specialL = 0, ifata, ispate, idiag, ipd, ipf, istanga, idreapta, ispecL;
         boolean mm;
+        //Logger.write(System.currentTimeMillis()+"::LOGGER::Am intrat in geAllMoves::");
         
         /* Setare pozitii mutare */
-        if((ifata = howToMove.indexOf("fata")) != -1)
-            fata = howToMove.charAt(ifata - 1);
-        if((ispate = howToMove.indexOf("spate")) != -1)
-            spate = howToMove.charAt(ispate - 1);
-        if((idiag = howToMove.indexOf("diag")) != -1)
-            diag = howToMove.charAt(idiag - 1);
-        if((ipd = howToMove.indexOf("pd")) != -1)
+        if((howToMove.indexOf("fata")) != -1)
+            fata = 1;
+        if((howToMove.indexOf("spate")) != -1)
+            spate = 1;
+        if((howToMove.indexOf("diag")) != -1)
+            diag = 1;
+        if((howToMove.indexOf("pd")) != -1)
             pd = 1;
-        if((ipf = howToMove.indexOf("pf")) != -1)
+        if((howToMove.indexOf("pf")) != -1)
             pf = 1;
-        if((ispecL = howToMove.indexOf("specialL")) != -1)
+        if((howToMove.indexOf("specialL")) != -1)
             specialL = 1;
-        if((istanga = howToMove.indexOf("stanga")) != -1)
-            stanga = howToMove.charAt(istanga - 1);
-        if((idreapta = howToMove.indexOf("dreapta")) != -1)
-            dreapta = howToMove.charAt(idreapta - 1);
+        if((howToMove.indexOf("stanga")) != -1)
+            stanga = 1;
+        if((howToMove.indexOf("dreapta")) != -1)
+            dreapta = 1;
         
         /* Generare mutari NEGRU*/
-        mm=true;
+        /*mm=true;
         if(fata != 0)
             for(int k = 0; k < 7; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i+k,j)) && (Board.board[i+k][j] != 'R') && (!Board.outOfBounds(i+k,j)))
+                    if((!Board.isBlackPiece(i+k,j)) && (Board.board[i+k][j] != 'R') && (!Board.outOfBounds(i+k,j))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in fata mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j));
+                    }
                     else
                         mm = false;
+        
         
         mm = true;
         if(spate != 0)
             for(int k = 0; k < 7; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i-k,j)) && (Board.board[i-k][j] != 'R') && (!Board.outOfBounds(i-k,j)))
-                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j));                    
+                    if((!Board.isBlackPiece(i-k,j)) && (Board.board[i-k][j] != 'R') && (!Board.outOfBounds(i-k,j))){
+                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in spate mutarea::"+(Board.translatePosition(i, j) + Board.translatePosition(i-k, j)));
+                    }
                     else
                         mm = false;
         mm = true;
         if(stanga != 0)
             for(int k = 0; k < 7; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i,j-k)) && (Board.board[i][j-k] != 'R') && (!Board.outOfBounds(i,j-k)))
-                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));                    
+                    if((!Board.isBlackPiece(i,j-k)) && (Board.board[i][j-k] != 'R') && (!Board.outOfBounds(i,j-k))){
+                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j-k));      
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in stanga mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i, j-k));
+                    }
                     else
                         mm = false;
         
@@ -156,40 +166,50 @@ public class Pieces {
         if(dreapta != 0)
             for(int k = 0; k < 7; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i,j+k)) && (Board.board[i][j+k] != 'R') && (!Board.outOfBounds(i,j+k)))
-                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));                    
+                    if((!Board.isBlackPiece(i,j+k)) && (Board.board[i][j+k] != 'R') && (!Board.outOfBounds(i,j+k))){
+                        listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i, j+k));           
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in dreapta mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i, j+k));
+                    }
                     else
                         mm = false;
         mm = true;
         if(diag != 0){
             for(int k = 0; k < diag; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i+k,j+k)) && (Board.board[i+k][j+k] != 'R') && (!Board.outOfBounds(i+k,j+k)))
+                    if((!Board.isBlackPiece(i+k,j+k)) && (Board.board[i+k][j+k] != 'R') && (!Board.outOfBounds(i+k,j+k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j+k));
+                    }
                     else
                         mm = false;
             mm = true;
             for(int k = 0; k < diag; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i+k,j-k)) && (Board.board[i+k][j-k] != 'R') && (!Board.outOfBounds(i+k,j-k)))
+                    if((!Board.isBlackPiece(i+k,j-k)) && (Board.board[i+k][j-k] != 'R') && (!Board.outOfBounds(i+k,j-k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i+k, j-k));
+                    }
                     else
                         mm = false;
             mm = true;
             for(int k = 0; k < diag; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i-k,j-k)) && (Board.board[i-k][j-k] != 'R') && (!Board.outOfBounds(i-k,j-k)))
+                    if((!Board.isBlackPiece(i-k,j-k)) && (Board.board[i-k][j-k] != 'R') && (!Board.outOfBounds(i-k,j-k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i-k, j-k));
+                    }
                     else
                         mm = false;
             mm = true;
             for(int k = 0; k < diag; k++)
                 if(mm)
-                    if((!Board.isBlackPiece(i-k,j+k)) && (Board.board[i-k][j+k] != 'R') && (!Board.outOfBounds(i-k,j+k)))
+                    if((!Board.isBlackPiece(i-k,j+k)) && (Board.board[i-k][j+k] != 'R') && (!Board.outOfBounds(i-k,j+k))){
                         listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
+                        Logger.write("LOOGER::Pieces.java::Am adaugat in diag mutarea::"+Board.translatePosition(i, j) + Board.translatePosition(i-k, j+k));
+                    }
                     else
                         mm = false;                    
-        }
+        }*/
         
         if(pf != 0)
             if((!Board.isBlackPiece(i+1,j)) && (!Board.isWhitePiece(i+1, j)) && (!Board.outOfBounds(i+1,j)) && (Board.board[i+1][j+1] != 'R'))
@@ -220,8 +240,34 @@ public class Pieces {
             if((!Board.isBlackPiece(i-2,j-1)) && (!Board.outOfBounds(i-2,j-1)) && (Board.board[i-2][j-1] != 'R'))
                 listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-2,j-1));
         }
-       
-            return listOfMoves;        
+        
+        /* Debug shit */
+        if(fata != 0)
+            if((!Board.isBlackPiece(i+1, j)) && (!Board.outOfBounds(i+1, j)) && (Board.board[i+1][j] != 'R')){
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1,j));
+                Logger.write("LOGGER::Pieces.java::Am scris in fata de la::"+Board.translatePosition(i, j)+"::de pe pozitiile::"+i+" "+j+"::la::"+Board.translatePosition(i+1,j)+"::pe pozitiile::"+(i+1)+" "+j);
+            }
+            
+        
+        if(spate != 0)
+            if((!Board.isBlackPiece(i-1, j)) && (!Board.outOfBounds(i-1, j)) && (Board.board[i-1][j] != 'R')){
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-1,j));
+            Logger.write("LOGGER::Pieces.java::Am scris in spate::"+Board.translatePosition(i, j)+"::de pe pozitiile::"+i+" "+j+"::la::"+Board.translatePosition(i-1,j)+"::pe pozitiile::"+(i-1)+" "+j);
+        }
+        
+        if(stanga != 0)
+            if((!Board.isBlackPiece(i, j-1)) && (!Board.outOfBounds(i, j-1)) && (Board.board[i][j-1] != 'R')){
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i,j-1));
+            Logger.write("LOGGER::Pieces.java::Am scris in stanga::"+Board.translatePosition(i, j)+"::de pe pozitiile::"+i+" "+j+"::la::"+Board.translatePosition(i,j-1)+"::pe pozitiile::"+i+" "+(j-1));
+        }
+        
+        if(dreapta != 0)
+            if((!Board.isBlackPiece(i, j+1)) && (!Board.outOfBounds(i, j+1)) && (Board.board[i][j+1] != 'R')){
+                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i,j+1));
+            Logger.write("LOGGER::Pieces.java::Am scris in dreapta::"+Board.translatePosition(i, j)+"::de pe pozitiile::"+i+" "+j+"::la::"+Board.translatePosition(i,j+1)+"::e pozitiile::"+i+" "+(j+1));            
+        }
+        
+        return listOfMoves;        
     }
     
 }

@@ -8,6 +8,7 @@
 
 package chess.project;
 
+import java.io.IOException;
 import static java.sql.Types.NULL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -46,60 +47,9 @@ public class Moves {
     }
     
     /**
-     * Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
-     * 
-     * @param cmd 
-     */
-    static void OLDcomputeMove(String cmd){
-        
-        if(Engine.color == "black"){
-            
-            int v[][] = Board.translatePosition(cmd);
-            int recI = v[0][0], recJ = v[0][1], recK = v[1][0], recL = v[1][1];
-            int i = 11 - recI, j = 11 - recJ, k = 11 - recK, l = 11 - recL;
-            if(Board.board[k][l] == -1){
-                Engine.resign();
-            }else if(Board.board[i][j] != 'P' &&
-                     Board.board[i][j] != 'T' &&
-                     Board.board[i][j] != 'N' &&
-                     Board.board[i][j] != 'C' &&
-                     Board.board[i][j] != 'D' &&
-                     Board.board[i][j] != 'R' &&
-                     Board.board[recK][recL] != 'D'){
-                        Board.board[k][l] = Board.board[i][j];
-                        Board.board[i][j] = 0;
-                        System.out.println("move "+ Board.translatePosition(i, j) + Board.translatePosition(k, l));
-                    }else
-                        Engine.resign();
-        }else{
-            
-            if(Board.board[kW][lW] != -1 &&
-               Board.board[iW][jW] != 'p' &&
-               Board.board[iW][jW] != 't' &&
-               Board.board[iW][jW] != 'n' &&
-               Board.board[iW][jW] != 'c' &&
-               Board.board[iW][jW] != 'd' &&
-               Board.board[iW][jW] != 'r' &&
-               Board.board[kW][lW] != 'p' &&
-               Board.board[kW][lW] != 't' &&
-               Board.board[kW][lW] != 'n' &&
-               Board.board[kW][lW] != 'c' &&
-               Board.board[kW][lW] != 'd' &&
-               Board.board[kW][lW] != 'r'){
-                Board.board[kW][lW] = Board.board[iW][jW];
-                Board.board[iW][jW] = 0;                
-                System.out.println("move "+ Board.translatePosition(iW, jW) + Board.translatePosition(kW, lW));
-                iW=kW;
-                kW--;
-            }else
-                Engine.resign();
-        }
-    }
-    
-    /**
      * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
      */
-    static int computeMove(){
+    static int computeMove() throws IOException{
         int[] randomPiece = Engine.getRandomPiece();
         ArrayList<String> moves;
         
