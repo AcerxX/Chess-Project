@@ -55,9 +55,8 @@ public class Moves {
         /* Declarari generale */
         int[] randomPiece = Engine.getRandomPiece();
         ArrayList<String> moves;
-        int[][] tempBoard;
         
-        /* Verificam daca am primit vreo mutare, in caz contrar returnam -1 pentru a fi reapaelata functia in main */
+        /* Verificam daca am primit vreo mutare, in caz contrar returnam -1 pentru a fi reapelata functia in main */
         if(Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty()){
             Logger.write("LOGGER::Moves.java::Nu pot face mutarea!");
             return -1;
@@ -68,7 +67,6 @@ public class Moves {
         Random generator = new Random();        
         int i = generator.nextInt(moves.size()); 
         
-        tempBoard = Board.board;
         recordMove(moves.get(i));
         Logger.write("LOGGER::Moves.java::Incerc mutarea::"+moves.get(i));
         
@@ -112,9 +110,22 @@ public class Moves {
     static void recordMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0)+""+cmd.charAt(1)+""+cmd.charAt(2)+""+cmd.charAt(3));
         specialPiece = Board.board[v[1][0]][v[1][1]];
-        
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
+        
+        if("black".equals(Engine.color)){
+            if((v[1][0] == 9) && (Board.board[v[1][0]][v[1][1]] == 'p')){
+                specialMove = cmd;
+                Board.board[v[1][0]][v[1][1]] = 'd';
+            }
+        }else{
+            if((v[1][0] == 2) && (Board.board[v[1][0]][v[1][1]] == 'P')){
+                specialMove = cmd;
+                Board.board[v[1][0]][v[1][1]] = 'D';
+            }
+        }
+        
+        
         
         if(cmd.length() == 5){
             specialMove = cmd;
@@ -126,6 +137,8 @@ public class Moves {
         for(int i=0;i<12;i++){
             for(int j=0; j<12;j++)
                 Logger.writeNNL((char)Board.board[i][j]+ " ");
+                //System.out.print((char)Board.board[i][j]+ " ");
+            //System.out.println();
             Logger.newLine();
         }
     }
@@ -137,6 +150,7 @@ public class Moves {
      */
     private static void revertMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0)+""+cmd.charAt(1)+""+cmd.charAt(2)+""+cmd.charAt(3));
+        
         Board.board[v[0][0]][v[0][1]] = Board.board[v[1][0]][v[1][1]];
         Board.board[v[1][0]][v[1][1]] = specialPiece;
         if(cmd.equals(specialMove)){

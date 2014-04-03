@@ -2,200 +2,20 @@ WINBOARD::xboard
 -------------
 WINBOARD::new
 -------------
-WINBOARD::white
+WINBOARD::ptest
 -------------
-LOGGER::Engine.java::Am ales piesa::T
+WINBOARD::h2h8
 -------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
+LOGGER::Engine.java::Am ales piesa::p
 -------------
-LOGGER::Moves.java::Nu pot face mutarea!
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engine.java::Am ales piesa::C
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::n
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::d
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::r
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::n
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
+LOGGER::Moves.java::Incerc mutarea::a7a6
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 9
 -------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Nu am gasit sah!
--------------
-LOGGER::Moves.java::Am facut mutarea!
--------------
-WINBOARD::a7a6
--------------
-LOGGER::Engine.java::Am ales piesa::P
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a8a7
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::n
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::d
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::r
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::n
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 2 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 4 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Nu am gasit sah!
--------------
-LOGGER::Moves.java::Am facut mutarea!
--------------
-WINBOARD::new
--------------
-WINBOARD::black
--------------
-WINBOARD::new
--------------
-WINBOARD::a2a4
--------------
-LOGGER::Engine.java::Am ales piesa::t
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Moves.java::Nu pot face mutarea!
--------------
-LOGGER::Engine.java::Am ales piesa::c
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 5
--------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
@@ -210,51 +30,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::b2b4
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -262,21 +42,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+LOGGER::Moves.java::Incerc mutarea::b7b6
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -290,159 +56,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::c2c4
--------------
-LOGGER::Engine.java::Am ales piesa::t
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Moves.java::Nu pot face mutarea!
--------------
-LOGGER::Engine.java::Am ales piesa::t
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::h8g8
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::h8g8
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d1c2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d1b3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOGGER::Nu am gasit sah!
--------------
-LOGGER::Moves.java::Am facut mutarea!
--------------
-WINBOARD::d2d4
--------------
-LOGGER::Engine.java::Am ales piesa::t
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::t
--------------
-LOGGER::Moves.java::Nu pot face mutarea!
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -450,21 +68,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+LOGGER::Moves.java::Incerc mutarea::c7c6
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -478,183 +82,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1d2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1e3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1g5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::d1d2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::d1d3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d1c2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d1b3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::d1d2
--------------
-LOGGER::Engine.java::Am ales piesa::n
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::n
--------------
-LOGGER::Moves.java::Nu pot face mutarea!
--------------
-LOGGER::Engine.java::Am ales piesa::c
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::c
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::d2d1
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::d2d3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d2c2
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d2b2
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d2a2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d2c3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d2e3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d2f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d2g5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e1d1
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOGGER::Nu am gasit sah!
--------------
-LOGGER::Moves.java::Am facut mutarea!
--------------
-WINBOARD::d2d3
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -662,51 +94,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 7 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::d3d2
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::d3d1
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d3c3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d3b3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::d3a3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::d3e3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::d3f3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::d3g3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::d3h3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d3c2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d3e4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d3f5
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::d3g6
+LOGGER::Moves.java::Incerc mutarea::b6b5
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -720,69 +108,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1d2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1e3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1g5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e1d1
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::d3f3
--------------
-LOGGER::Engine.java::Am ales piesa::p
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
--------------
-LOGGER::Moves.java::Nu pot face mutarea!
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -790,51 +120,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 7 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::f3f4
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::f3f5
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::f3e3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::f3d3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::f3c3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::f3b3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::f3a3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::f3g3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::f3h3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::f3e4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::f3d5
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::f3g4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::f3h5
+LOGGER::Moves.java::Incerc mutarea::a6a5
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -848,63 +134,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1d2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1e3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1g5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e1d1
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::f3e3
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -912,51 +146,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 7 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::e3e4
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::e3e5
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::e3e6
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e3d3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e3c3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e3b3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e3a3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::e3f3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::e3g3
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::e3h3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e3d2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e3f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e3g5
+LOGGER::Moves.java::Incerc mutarea::a5a4
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -970,59 +160,11 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
--------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e1d1
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
--------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::e37
--------------
-WINBOARD::e3e7
+WINBOARD::h8h8
 -------------
 LOGGER::Engine.java::Am ales piesa::p
 -------------
@@ -1030,41 +172,7 @@ LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 3 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:7fata 7diag 7spate 7stanga 7dreapta::pentru piesa::D
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::e7e6
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::e7e5
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::e7e4
--------------
-LOOGER::Pieces.java::Am adaugat in fata mutarea::e7e3
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e7d7
--------------
-LOOGER::Pieces.java::Am adaugat in dreapta mutarea::e7f7
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e7d6
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e7c5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 2
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 6 5
--------------
-LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+LOGGER::Moves.java::Incerc mutarea::d7d6
 -------------
 LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
@@ -1078,61 +186,409 @@ LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 9
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::c6c5
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
 -------------
 LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 2
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
 -------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a2
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
 -------------
-LOOGER::Pieces.java::Am adaugat in spate mutarea::a1a3
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 3
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 4
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1b2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1a3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1d2
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1e3
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1f4
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::c1g5
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 6
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialRege::pentru piesa::R
--------------
-LOOGER::Pieces.java::Am adaugat in stanga mutarea::e1d1
--------------
-LOOGER::Pieces.java::Am adaugat in diag mutarea::e1d2
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 7
--------------
-LOGGER::Pieces.java::Am primit miscarile:7diag::pentru piesa::N
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 8
--------------
-LOGGER::Pieces.java::Am primit miscarile:specialL::pentru piesa::C
--------------
-LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 9 9
--------------
-LOGGER::Pieces.java::Am primit miscarile:7stanga 7dreapta 7fata 7spate::pentru piesa::T
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
 -------------
 LOGGER::Nu am gasit sah!
 -------------
 LOGGER::Moves.java::Am facut mutarea!
 -------------
-WINBOARD::quit
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::c5c4
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::d6d5
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::a4a3
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::d5d4
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::b5b4
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::d4d3
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 6
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::d3e2
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::c4c3
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::b4b3
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::c3c2
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::b3b2
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::a3a2
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::c2c1
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::a2a1
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::e2e1
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
+-------------
+WINBOARD::h8h8
+-------------
+LOGGER::Engine.java::Am ales piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::p
+-------------
+LOGGER::Moves.java::Incerc mutarea::b2b1
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 7
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia 8 8
+-------------
+LOGGER::Pieces.java::Am primit miscarile:pf pd::pentru piesa::P
+-------------
+LOGGER::Nu am gasit sah!
+-------------
+LOGGER::Moves.java::Am facut mutarea!
 -------------

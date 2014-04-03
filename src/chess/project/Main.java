@@ -96,6 +96,9 @@ public class Main {
             else if(cmd.indexOf("time") != -1){
                 //TODO Clock
             }
+            /* Private test command */
+            else if(cmd.indexOf("ptest") != -1)
+                Board.testInit();
         }
     }
 }
