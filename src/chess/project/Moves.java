@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.5b
+ * @version 0.5.1b
  * @author Selennae
  */
 public class Moves {

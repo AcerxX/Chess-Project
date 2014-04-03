@@ -10,9 +10,10 @@ package chess.project;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * @version 0.5b
+ * @version 0.5.2b
  * @author andre_000
  */
 public class Pieces {
@@ -83,7 +84,13 @@ public class Pieces {
         
         setType(i,j);        
         switch (Pieces.type){
-            case "pion": return "pf pd";
+            case "pion":
+                if("black".equals(Engine.color) && (i==3))
+                    return "p2f pd";
+                else if("white".equals(Engine.color) && (i==8))
+                    return "p2f pd";
+                else
+                    return "pf pd";
             case "dama": return "7fata 7diag 7spate 7stanga 7dreapta";
             case "rege": return "specialRege";
             case "nebun": return "7diag";
@@ -104,7 +111,7 @@ public class Pieces {
         /* Declarari generale */
         ArrayList<String> listOfMoves = new ArrayList<>();
         String howToMove;
-        int fata = 0, spate = 0, diag = 0, pd = 0, stanga = 0, dreapta = 0, pf = 0, specialL = 0, ifata, ispate, idiag, istanga, idreapta, specialRege = 0;
+        int fata = 0, spate = 0, diag = 0, pd = 0, stanga = 0, dreapta = 0, pf = 0, p2f = 0, specialL = 0, ifata, ispate, idiag, istanga, idreapta, specialRege = 0;
         
         /* Preluare miscari valide pentru piesa de la pozitia i si j */
         howToMove = getValid(i, j);
@@ -125,6 +132,8 @@ public class Pieces {
             spate = howToMove.charAt(ispate - 1);
         if((idiag = howToMove.indexOf("diag")) != -1)
             diag = howToMove.charAt(idiag - 1);
+        if((howToMove.indexOf("p2f")) != -1)
+            p2f = 1;
         if((howToMove.indexOf("pd")) != -1)
             pd = 1;
         if((howToMove.indexOf("pf")) != -1)
@@ -273,6 +282,21 @@ public class Pieces {
             if(pf != 0)
                 if((!Board.isBlackPiece(i+1,j)) && (!Board.isWhitePiece(i+1, j)) && (!Board.outOfBounds(i+1,j)) && (Board.board[i+1][j] != 'R')) // Daca in fata nu avem nicio piesa si nu iesim de pe tabla facem mutarea
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j));
+            
+            if(p2f != 0){
+                if((!Board.isWhitePiece(i+1,j)) && (!Board.isBlackPiece(i+1, j)) && (Board.board[i+1][j] != 'r')){
+                        if((!Board.isWhitePiece(i+2,j)) && (!Board.isBlackPiece(i+2, j)) && (Board.board[i+2][j] != 'r')){
+                            Random idk = new Random();
+                            int ceva = idk.nextInt(2);
+                            if( ceva == 1)
+                                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+2, j));
+                            else
+                                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j));
+                        }
+                        else 
+                            listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i+1, j));
+                }
+            }
         
             /* Mers pe diagonala pentru pion */
             if(pd != 0){
@@ -433,7 +457,22 @@ public class Pieces {
             if(pf != 0)
                 if((!Board.isWhitePiece(i-1,j)) && (!Board.isBlackPiece(i-1, j)) && (!Board.outOfBounds(i-1,j)) && (Board.board[i-1][j] != 'r'))
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-1, j));
-        
+            
+            if(p2f != 0){
+                if((!Board.isWhitePiece(i-1,j)) && (!Board.isBlackPiece(i-1, j)) && (Board.board[i-1][j] != 'r')){
+                        if((!Board.isWhitePiece(i-2,j)) && (!Board.isBlackPiece(i-2, j)) && (Board.board[i-2][j] != 'r')){
+                            Random idk = new Random();
+                            int ceva = idk.nextInt(2);
+                            if( ceva == 1)
+                                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-2, j));
+                            else
+                                listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-1, j));
+                        }
+                        else 
+                            listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-1, j));
+                }
+            }
+                    
             if(pd != 0){
                 if((Board.isBlackPiece(i-1, j-1)))
                     listOfMoves.add(Board.translatePosition(i, j) + Board.translatePosition(i-1, j-1));
