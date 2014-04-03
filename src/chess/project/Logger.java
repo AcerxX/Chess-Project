@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  *
- * @version 0.5b 
+ * @version 0.5.3b 
  * @author alexa_000
  */
 public class Logger {
@@ -30,15 +30,15 @@ public class Logger {
     }*/
     
     static void create() throws IOException{
-        debug = new BufferedWriter(new FileWriter("log.txt"));
+        debug = new BufferedWriter(new FileWriter("log.txt", true));
     }
 
     static void write(String cmd) throws IOException {
-        debug.write(cmd);
+        /*debug.write(cmd);
         debug.newLine();
         debug.write("-------------");
         debug.newLine();
-        debug.flush();
+        debug.flush();*/
     }
     
     static void writeNNL(String cmd) throws IOException{

@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.5.1b
+ * @version 0.5.3b
  * @author Selennae
  */
 public class Moves {
@@ -55,10 +55,10 @@ public class Moves {
         /* Declarari generale */
         int[] randomPiece = Engine.getRandomPiece();
         ArrayList<String> moves;
-        
+            
         /* Verificam daca am primit vreo mutare, in caz contrar returnam -1 pentru a fi reapelata functia in main */
         if(Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty()){
-            Logger.write("LOGGER::Moves.java::Nu pot face mutarea!");
+            Logger.write("LOGGER::"+Engine.color+"::"+"Moves.java::Nu pot face mutarea!");
             return -1;
         }                   
         
@@ -68,7 +68,7 @@ public class Moves {
         int i = generator.nextInt(moves.size()); 
         
         recordMove(moves.get(i));
-        Logger.write("LOGGER::Moves.java::Incerc mutarea::"+moves.get(i));
+        Logger.write("LOGGER::"+Engine.color+"::"+"Moves.java::Incerc mutarea::"+moves.get(i));
         
         /* Verificam daca dupa efetuarea mutarii suntem in sah; daca da dam undo la mutare si cautam alta */
         if(Engine.checkIfCheck()){
@@ -76,7 +76,7 @@ public class Moves {
             return -1;
         }
         
-        Logger.write("LOGGER::Moves.java::Am facut mutarea!");
+        Logger.write("LOGGER::"+Engine.color+"::"+"Moves.java::Am facut mutarea!");
         System.out.println("move "+moves.get(i));
         return 1;
     }

@@ -14,16 +14,17 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.5b
+ * @version 0.5.3b
  * @author Alexandru MIHAI
  */
 public class Main {
     
     /**Variabile generale*/
-    public static final String engineName = "Thunder Chickens Chess Engine v0.5b";
+    public static final String engineName = "Thunder Chickens Chess Engine v0.5 beta";
     public static BufferedReader reader;
     public static String cmd;
     public static Board board;
+    public static boolean isComputer = false;
     
     /**Conditii end game*/
     public static int iCheckmate;
@@ -32,7 +33,7 @@ public class Main {
     
     
     
-    public static void main(String args[]) throws IOException{
+    public static void main(String args[]) throws IOException, InterruptedException{
         Board.initAll();
         reader = new BufferedReader(new InputStreamReader(System.in));
         printCopywright();
@@ -44,7 +45,7 @@ public class Main {
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
-        System.out.println("***********Version 0.5b************");
+        System.out.println("***********Version 0.5.3b************");
     }
     
     /**
@@ -52,14 +53,15 @@ public class Main {
      * Scrie toate comenzile primite in fisierul debug_engine.txt, prin modificarea variabilei allowDebug.<BR>
      * 
      * @throws IOException 
+     * @throws java.lang.InterruptedException 
      */
-    public static void getCmd() throws IOException{ 
+    public static void getCmd() throws IOException, InterruptedException{ 
         
             Logger.create();
             
         while(true){
             cmd = reader.readLine();       
-            Logger.write("WINBOARD::"+cmd);                
+            Logger.write("WINBOARD::"+Engine.color+"::"+cmd);                
             
             /*Quit Game*/
             if(cmd.startsWith("quit")){
@@ -67,38 +69,55 @@ public class Main {
                 System.exit(0);
             }
             /*New Game*/
-            else if(cmd.equals("new"))
+            if(cmd.equals("new")){
+                Logger.write("LOGGER::"+Engine.color+"::"+"Am setat force FALSE!");
                 Board.newGame();
+            }
+                
             /*XBoard*/
-            else if(cmd.indexOf("xboard") != -1)
+            if(cmd.indexOf("xboard") != -1)
                 System.out.println("feature san=0 time=1 draw=1 myname=\""+engineName+"\" colors=1 done=1");
+            
             /*White*/
-            else if(cmd.indexOf("white") != -1)
+            if(cmd.indexOf("white") != -1)
                 Engine.setEngineColor("white");
+            
             /*Black*/
-            else if(cmd.indexOf("black") != -1)
+            if(cmd.indexOf("black") != -1)
                 Engine.setEngineColor("black");
+            
             /*Force*/
-            else if(cmd.indexOf("force") != -1)
+            if(cmd.indexOf("force") != -1)
                 Engine.setForced(true);
+            
             /*Go*/
-            else if(cmd.indexOf("go") != -1)
-                Engine.setForced(false); 
+            if(cmd.indexOf("go") != -1){
+                Logger.write("LOGGER::"+Engine.color+"::"+"Am primit go::");
+                Engine.setForced(false);
+            }
+            
             /*Move Received*/
-            else if(Moves.checkIfMove(cmd)){
+            if(Moves.checkIfMove(cmd)){
                 Moves.recordMove(cmd);
-                while(true){
-                    if(Moves.computeMove() == 1)
+                Logger.write("LOGGER::"+Engine.color+"::"+"Am scris comanda in matrice::");
+                for(int i = 1; i <= 900; i++){ 
+                    if((Moves.computeMove() == 1))                        
                         break;
                 }
             }
+            
             /*Time*/
-            else if(cmd.indexOf("time") != -1){
+            if(cmd.indexOf("time") != -1){
                 //TODO Clock
             }
-            /* Private test command */
-            else if(cmd.indexOf("ptest") != -1)
-                Board.testInit();
+            
+            /* Computer Enemy */
+            if(cmd.indexOf("computer") != -1){
+                isComputer = true;
+                Engine.isForced = false;
+                Logger.write("LOGGER::"+Engine.color+"::"+"Am setat isComputer TRUE::");
+            }
+            
         }
     }
 }

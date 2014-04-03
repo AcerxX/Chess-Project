@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.5b
+ * @version 0.5.3b
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -34,12 +34,14 @@ public class Engine {
         switch (turn) {
             case "white":
                 color = "white";
+                isForced = false;
                 while(true){
                     if(Moves.computeMove() == 1)
                         break;
                 }
                 break;
             case "black":
+                isForced = false;
                 color = "black";
                 break;
         }
@@ -99,7 +101,7 @@ public class Engine {
                 if("black".equals(color)){
                     color = "white";
                     if(Board.isWhitePiece(i, j)){
-                        Logger.write("LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
+                        Logger.write("LOGGER::"+Engine.color+"::"+"Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
                         moves = Pieces.getAllMoves(i, j);
                         
                         if(moves.isEmpty()){
@@ -109,7 +111,7 @@ public class Engine {
                         for(int k = 0; k < moves.size(); k++){
                             v = Board.translatePosition(moves.get(k));
                             if(Board.board[v[1][0]][v[1][1]] == 'r'){
-                                Logger.write("LOGGER::Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
+                                Logger.write("LOGGER::"+Engine.color+"::"+"Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
                                 color = "black";
                                 return true;
                             }
@@ -119,7 +121,7 @@ public class Engine {
                 }else{
                     color = "black";
                     if(Board.isBlackPiece(i, j)){
-                        Logger.write("LOGGER::Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
+                        Logger.write("LOGGER::"+Engine.color+"::"+"Engige.java::checkIfCheck verifica sah pentru pozitia "+i+" "+j);
                         moves = Pieces.getAllMoves(i, j);
                         if(moves.isEmpty()){
                             color = "white";
@@ -128,7 +130,7 @@ public class Engine {
                         for(int k = 0; k < moves.size(); k++){
                             v = Board.translatePosition(moves.get(k));
                             if(Board.board[v[1][0]][v[1][1]] == 'R'){
-                                Logger.write("LOGGER::Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
+                                Logger.write("LOGGER::"+Engine.color+"::"+"Engine.java::Am gasit mutarea "+moves.get(k)+"::care da sah");
                                 color = "white";
                                 return true;
                             }
@@ -139,7 +141,7 @@ public class Engine {
                 }
             }
         }
-        Logger.write("LOGGER::Nu am gasit sah!");
+        Logger.write("LOGGER::"+Engine.color+"::"+"Nu am gasit sah!");
         return false;
     }
     
@@ -173,7 +175,7 @@ public class Engine {
         int[] ret = new int[2];
         ret[0] = pairs[l][0];
         ret[1] = pairs[l][1];
-        Logger.write("LOGGER::Engine.java::Am ales piesa::"+(char)Board.board[ret[0]][ret[1]]);
+        Logger.write("LOGGER::"+Engine.color+"::"+"Engine.java::Am ales piesa::"+(char)Board.board[ret[0]][ret[1]]);
         return ret;
         
     }
