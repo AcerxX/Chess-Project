@@ -14,13 +14,13 @@ import java.io.InputStreamReader;
 
 /**
  * 
- * @version 0.5.3b
+ * @version 1.0
  * @author Alexandru MIHAI
  */
 public class Main {
     
     /**Variabile generale*/
-    public static final String engineName = "Thunder Chickens Chess Engine v0.5 beta";
+    public static final String engineName = "Thunder Chickens Chess Engine v1";
     public static BufferedReader reader;
     public static String cmd;
     public static Board board;
@@ -45,7 +45,7 @@ public class Main {
      */
     public static void printCopywright(){
         System.out.println("***THUNDER CHICKENS CHESS ENGINE***");
-        System.out.println("***********Version 0.5.3b************");
+        System.out.println("************Version 1**************");
     }
     
     /**
@@ -57,10 +57,12 @@ public class Main {
      */
     public static void getCmd() throws IOException, InterruptedException{ 
         
-            Logger.create();
-            
+        /* Debug control here */
+        Logger.create(false);
+        
+        /*Forever*/
         while(true){
-            cmd = reader.readLine();       
+            cmd = reader.readLine();   // Citim comanda trimisa de la xboard si o parsam mai jos     
             Logger.write("WINBOARD::"+Engine.color+"::"+cmd);                
             
             /*Quit Game*/
@@ -106,9 +108,13 @@ public class Main {
                 }
             }
             
-            /*Time*/
-            if(cmd.indexOf("time") != -1){
-                //TODO Clock
+            /*Time*/ /*TODO*/
+            int pos;
+            if((pos = cmd.indexOf("otim")) != -1){
+                Clock.setClock(30000, true);
+            }
+            if((pos = cmd.indexOf("time")) != -1){
+                Clock.setClock(30000, false);
             }
             
             /* Computer Enemy */

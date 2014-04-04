@@ -14,7 +14,7 @@ import java.util.Random;
 
 /**
  *
- * @version 0.5.3b
+ * @version 1.0
  * @author Selennae
  */
 public class Moves {
@@ -22,12 +22,12 @@ public class Moves {
     /*General variables for handling moves*/
      static String theMove;
      static String receivedMove;
-     static int iW = 8, jW = 5, kW = 6, lW = 5;
      static String specialMove;
      static int specialPiece;
      
     /**
-     * Verifica daca mutarea este legala
+     * Verifica daca mutarea este legala.
+     * (BYPASSED)
      * 
      * @param theMove
      * @return 
@@ -38,7 +38,8 @@ public class Moves {
     }
     
     /**
-     * Verifica daca mutarea se face in tura corecta
+     * Verifica daca mutarea se face in tura corecta.
+     * (BYPASSED)
      * 
      * @return 
      */
@@ -49,6 +50,8 @@ public class Moves {
     
     /**
      * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite mutarea la Winboard.
+     * 
+     * @return 
      */
     static int computeMove() throws IOException{
         
@@ -113,6 +116,7 @@ public class Moves {
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
         
+        /* (ENGINE) Verificare pion ajuns la final pentru a fi transformat in regina */
         if("black".equals(Engine.color)){
             if((v[1][0] == 9) && (Board.board[v[1][0]][v[1][1]] == 'p')){
                 specialMove = cmd;
@@ -123,10 +127,9 @@ public class Moves {
                 specialMove = cmd;
                 Board.board[v[1][0]][v[1][1]] = 'D';
             }
-        }
+        }     
         
-        
-        
+        /* (WINBOARD) Verificare pion ajuns la final pentru a fi transformat in regina */
         if(cmd.length() == 5){
             specialMove = cmd;
             if(Board.isBlackPiece(v[1][0], v[1][1]))
@@ -134,11 +137,10 @@ public class Moves {
             if(Board.isWhitePiece(v[1][0], v[1][1]))
                 Board.board[v[1][0]][v[1][1]] = 'D';
         }
+        
         for(int i=0;i<12;i++){
             for(int j=0; j<12;j++)
                 Logger.writeNNL((char)Board.board[i][j]+ " ");
-                //System.out.print((char)Board.board[i][j]+ " ");
-            //System.out.println();
             Logger.newLine();
         }
     }
@@ -153,12 +155,15 @@ public class Moves {
         
         Board.board[v[0][0]][v[0][1]] = Board.board[v[1][0]][v[1][1]];
         Board.board[v[1][0]][v[1][1]] = specialPiece;
+        
+        /* Verificam daca mutarea precedenta a transformat un pion in regina si schimbam totul cum trebuie */
         if(cmd.equals(specialMove)){
             if(Board.isBlackPiece(v[0][0], v[0][1]))
                 Board.board[v[0][0]][v[0][1]] = 'p';
             if(Board.isWhitePiece(v[0][0], v[0][1]))
                 Board.board[v[0][0]][v[0][1]] = 'P';
         }
+        
         for(int i=0;i<12;i++){
             for(int j=0; j<12;j++)
                 Logger.writeNNL((char)Board.board[i][j]+ " ");

@@ -14,44 +14,71 @@ import java.io.IOException;
 
 /**
  *
- * @version 0.5.3b 
+ * @version 1.0 
  * @author alexa_000
  */
 public class Logger {
 
     static BufferedWriter debug;
+    static boolean allowed;
     
-   /* public Logger() throws IOException{
-        debug = new BufferedWriter(new FileWriter("log.txt"));
-    }
-    
-    public Logger(String path) throws IOException{
-        debug = new BufferedWriter(new FileWriter(path));
-    }*/
-    
-    static void create() throws IOException{
+    /**
+     * Creaza fisierul si seteaza permisiunea de a scrie in fisier.
+     * 
+     * @param allowed
+     * @throws IOException 
+     */
+    static void create(boolean allowed) throws IOException{
         debug = new BufferedWriter(new FileWriter("log.txt", true));
+        Logger.allowed = allowed;
     }
 
+    /**
+     * Scriere a stringului pe o linie noua.
+     * 
+     * @param cmd
+     * @throws IOException 
+     */
     static void write(String cmd) throws IOException {
-        /*debug.write(cmd);
-        debug.newLine();
-        debug.write("-------------");
-        debug.newLine();
-        debug.flush();*/
+        if(allowed){
+            debug.write(cmd);
+            debug.newLine();
+            debug.write("-------------");
+            debug.newLine();
+            debug.flush();
+        }
     }
     
+    /**
+     * Scriere a stringului pe o singura linie.
+     * 
+     * @param cmd
+     * @throws IOException 
+     */
     static void writeNNL(String cmd) throws IOException{
-        debug.write(cmd);
+        if(allowed)
+            debug.write(cmd);
     }
 
+    /**
+     * Inchidere fisier.
+     * 
+     * @throws IOException 
+     */
     static void close() throws IOException {
         debug.close();
     }
 
+    /**
+     * Inserare linie noua goala in fisier.
+     * 
+     * @throws IOException 
+     */
     static void newLine() throws IOException {
-        debug.newLine();
-        debug.flush();
+        if(allowed){
+            debug.newLine();
+            debug.flush();
+        }
     }
     
 }

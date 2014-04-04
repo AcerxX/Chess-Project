@@ -14,13 +14,11 @@ import java.util.Random;
 
 /**
  *
- * @version 0.5.3b
+ * @version 1.0
  * @author Alexandru MIHAI
  */
 public class Engine {
     
-    static Board x;
-    static Board y;
     static String theMove;
     static boolean isForced;
     static String color = "black";
@@ -79,8 +77,7 @@ public class Engine {
         }
         else
         {
-            Clock.stopped(false);
-            //theMove = Moves.computeMove( x, y);
+            //theMove = Moves.computeMove( x, y); //si un while pe aici etapa viitoare
             if (Moves.isLegal(theMove))
                 System.out.println("move " + theMove);
         }

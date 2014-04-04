@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * @version 0.5.2b
+ * @version 1.0
  * @author andre_000
  */
 public class Pieces {

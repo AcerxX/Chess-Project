@@ -10,41 +10,51 @@ package chess.project;
 
 /**
  *
- * @version 0.3a Etapa 1 FINAL
+ * @version 1.0
  * @author Selennae
  */
 public class Clock {
     
     /*Variables needed to handle the clock*/
-     static int clock;
-     static int whiteClock;
-     static int blackClock;
+     static int whiteClock = 0;
+     static int blackClock = 0;
     
      /**
       * Returneaza valoarea ceasului.
       * 
       * @return 
       */
-    static int getClock()
+    static int getClock(boolean opponent)
     {
-        return clock;
+        if(opponent)
+            if("black".equals(Engine.color))
+                return whiteClock;
+            else
+                return blackClock;
+        else
+            if("black".equals(Engine.color))
+                return blackClock;
+            else
+                return whiteClock;
     }
     
     /**
      * Seteaza ceasul.
      * 
-     * @param clock 
+     * @param clock
+     * @param oTime
      */
-    static void setClock(int clock)
+    static void setClock(int clock, boolean oTime)
     {
-        Clock.clock = clock;
-    }
-    
-    /**
-     * @param ok 
-     */
-    static void stopped(boolean ok)
-    {
-        
+        if(oTime)
+            if("black".equals(Engine.color))
+                whiteClock = clock;
+            else
+                blackClock = clock;
+        else
+            if("black".equals(Engine.color))
+                blackClock = clock;
+            else
+                whiteClock = clock;
     }
 }
