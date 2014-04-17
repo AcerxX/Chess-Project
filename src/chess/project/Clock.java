@@ -5,7 +5,6 @@
  * 
  * Title: The Chess Project of Team <Thunder Chickens> @ CS, PUB, RO. 
  */
-
 package chess.project;
 
 /**
@@ -14,47 +13,47 @@ package chess.project;
  * @author Selennae
  */
 public class Clock {
-    
+
     /*Variables needed to handle the clock*/
-     static int whiteClock = 0;
-     static int blackClock = 0;
-    
-     /**
-      * Returneaza valoarea ceasului.
-      * 
-      * @return 
-      */
-    static int getClock(boolean opponent)
-    {
-        if(opponent)
-            if("black".equals(Engine.color))
+    static int whiteClock = 0;
+    static int blackClock = 0;
+
+    /**
+     * Returneaza valoarea ceasului.
+     *
+     * @return
+     */
+    static int getClock(boolean opponent) {
+        if (opponent) {
+            if ("black".equals(Engine.color)) {
                 return whiteClock;
-            else
+            } else {
                 return blackClock;
-        else
-            if("black".equals(Engine.color))
-                return blackClock;
-            else
-                return whiteClock;
+            }
+        } else if ("black".equals(Engine.color)) {
+            return blackClock;
+        } else {
+            return whiteClock;
+        }
     }
-    
+
     /**
      * Seteaza ceasul.
-     * 
+     *
      * @param clock
      * @param oTime
      */
-    static void setClock(int clock, boolean oTime)
-    {
-        if(oTime)
-            if("black".equals(Engine.color))
+    static void setClock(int clock, boolean oTime) {
+        if (oTime) {
+            if ("black".equals(Engine.color)) {
                 whiteClock = clock;
-            else
+            } else {
                 blackClock = clock;
-        else
-            if("black".equals(Engine.color))
-                blackClock = clock;
-            else
-                whiteClock = clock;
+            }
+        } else if ("black".equals(Engine.color)) {
+            blackClock = clock;
+        } else {
+            whiteClock = clock;
+        }
     }
 }
