@@ -156,7 +156,7 @@ public class Moves {
      * @param cmd
      * @throws IOException
      */
-    private static void revertMove(String cmd) throws IOException {
+    static void revertMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0) + "" + cmd.charAt(1) + "" + cmd.charAt(2) + "" + cmd.charAt(3));
 
         Board.board[v[0][0]][v[0][1]] = Board.board[v[1][0]][v[1][1]];

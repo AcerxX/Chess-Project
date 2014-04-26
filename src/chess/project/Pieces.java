@@ -20,7 +20,7 @@ public class Pieces {
     private static String type;
 
     /**
-     * Seteaza piesa. POSIBIL SA DISPARA IN VIITORUL APROPIAT!<BR>
+     * Seteaza piesa.<BR>
      * <BR>
      * LEGAL DECLARATIONS:<BR>
      * - pion<BR>
