@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 1.0
+ * @version 2.1
  * @author Selennae
  */
 public class Moves {
@@ -22,7 +22,7 @@ public class Moves {
     static String theMove;
     static String receivedMove;
     static String specialMove;
-    static int specialPiece;
+    //static int specialPiece;
 
     /**
      * Verifica daca mutarea este legala. (BYPASSED)
@@ -42,42 +42,15 @@ public class Moves {
     static boolean isInTurn() {
         return true;
     }
-
-    /**
-     * [RANDOM] Face mutarea efectiva a piesei in matricea engineului si trimite
-     * mutarea la Winboard.
-     *
-     * @return
-     */
-    static int computeMove() throws IOException {
-
-        /* Declarari generale */
-        int[] randomPiece = Engine.getRandomPiece();
-        ArrayList<String> moves;
-
-        /* Verificam daca am primit vreo mutare, in caz contrar returnam -1 pentru a fi reapelata functia in main */
-        if (Pieces.getAllMoves(randomPiece[0], randomPiece[1]).isEmpty()) {
-            Logger.write("LOGGER::" + Engine.color + "::" + "Moves.java::Nu pot face mutarea!");
-            return -1;
-        }
-
-        moves = Pieces.getAllMoves(randomPiece[0], randomPiece[1]);
-
-        Random generator = new Random();
-        int i = generator.nextInt(moves.size());
-
-        recordMove(moves.get(i));
-        Logger.write("LOGGER::" + Engine.color + "::" + "Moves.java::Incerc mutarea::" + moves.get(i));
-
-        /* Verificam daca dupa efetuarea mutarii suntem in sah; daca da dam undo la mutare si cautam alta */
-        if (Engine.checkIfCheck()) {
-            revertMove(moves.get(i));
-            return -1;
-        }
-
-        Logger.write("LOGGER::" + Engine.color + "::" + "Moves.java::Am facut mutarea!");
-        System.out.println("move " + moves.get(i));
-        return 1;
+    
+    static int computeMove() throws IOException{
+        Engine.actualColor = Engine.color; // Setam culoarea engineului pentur evaluare
+        ArrayList move = Engine.NegaMax(3); // Preluam mutarea de la NegaMax
+        System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:"  /*move.get(1)*/);
+        recordMove((String) move.get(1)); // Inregistram mutarea finala
+        Logger.write("LOGGER::"+ Engine.color + "::" + "Am facut mutarea: " + (String)move.get(1));
+        System.out.println("move " + (String)move.get(1));
+        return 1;        
     }
 
     /**
@@ -113,7 +86,7 @@ public class Moves {
      */
     static void recordMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0) + "" + cmd.charAt(1) + "" + cmd.charAt(2) + "" + cmd.charAt(3));
-        specialPiece = Board.board[v[1][0]][v[1][1]];
+        //specialPiece = Board.board[v[1][0]][v[1][1]]; // Piesa ce urmeaza a fi inlocuita
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
 
@@ -156,9 +129,8 @@ public class Moves {
      * @param cmd
      * @throws IOException
      */
-    static void revertMove(String cmd) throws IOException {
+    static void revertMove(String cmd, int specialPiece) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0) + "" + cmd.charAt(1) + "" + cmd.charAt(2) + "" + cmd.charAt(3));
-
         Board.board[v[0][0]][v[0][1]] = Board.board[v[1][0]][v[1][1]];
         Board.board[v[1][0]][v[1][1]] = specialPiece;
 

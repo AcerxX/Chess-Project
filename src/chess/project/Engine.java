@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 2.0
+ * @version 2.1
  * @author Alexandru MIHAI
  */
 public class Engine {
@@ -140,57 +140,26 @@ public class Engine {
     }
 
     /**
-     * Returneaza coordonatele i si j ale unei piese random de pe tabla.
-     *
-     * @return
-     */
-    static int[] getRandomPiece() throws IOException {
-
-        Random generator = new Random();
-        int[][] pairs = new int[16][2];
-        int k = 0;
-
-        for (int i = 2; i < 10; i++) {
-            for (int j = 2; j < 10; j++) {
-                if ("black".equals(color)) {
-                    if (Board.isBlackPiece(i, j)) {
-                        pairs[k][0] = i;
-                        pairs[k][1] = j;
-                        k++;
-                    }
-                } else {
-                    if (Board.isWhitePiece(i, j)) {
-                        pairs[k][0] = i;
-                        pairs[k][1] = j;
-                        k++;
-                    }
-                }
-            }
-        }
-
-        int l = generator.nextInt(k);
-        int[] ret = new int[2];
-        ret[0] = pairs[l][0];
-        ret[1] = pairs[l][1];
-        Logger.write("LOGGER::" + Engine.color + "::" + "Engine.java::Am ales piesa::" + (char) Board.board[ret[0]][ret[1]]);
-        return ret;
-
-    }
-
-    /**
      * Algoritm de predictie a celei mai bune mutari.<BR>
-     *
+     * Returneaza pe prima pozitie scorul, iar pe a doua mutarea.<BR>
      * @param depth
      * @return
      * @throws IOException
      */
     static ArrayList NegaMax(int depth) throws IOException {
-
+        /*System.out.println("Dupa apelare depth este:" + depth);
+        for(int i = 2; i < 10; i++){
+            for(int j = 2; j < 10; j++)
+                System.out.print((char)Board.board[i][j] + " ");
+            System.out.println();
+        }*/
+        
         /* Declarari */
         ArrayList<String> moves = new ArrayList<>(); // Lista de mutari ce va contine TOATE mutarile posibile intr-o tura
         ArrayList<String> auxMoves = new ArrayList<>();
         ArrayList result = new ArrayList();
         ArrayList eval = new ArrayList();
+        int specialPiece;
 
         /* Implementare */
         if (depth == 0) { // Daca adancimea e 0 se evalueaza tabla 
@@ -198,50 +167,69 @@ public class Engine {
             return eval;
         }
 
+        result.clear();
         result.add(Integer.MIN_VALUE);
 
         /* Preluam toate mutarile pentru toate piesele de pe tabla de culoarea noastra */
         for (int i = 2; i < 10; i++) {
             for (int j = 2; j < 10; j++) {
+                auxMoves.clear();
                 if ("black".equals(color)) { // Daca suntem playerul negru
-                    if (Board.isBlackPiece(i, j)) { // Daca piesa de pe tabla e neagra   
-                        auxMoves.clear(); // Golim lista de mutari
+                    if (Board.isBlackPiece(i, j)) { // Daca piesa de pe tabla e neagra 
                         auxMoves = Pieces.getAllMoves(i, j); // Preluam toate mutarile pentru piesa de pe pozitia i si j
                         for (int k = 0; k < auxMoves.size(); k++) { // Pentru fiecare mutare
+                            
+                            int v[][] = Board.translatePosition(auxMoves.get(k).charAt(0) + "" + auxMoves.get(k).charAt(1) + "" + auxMoves.get(k).charAt(2) + "" + auxMoves.get(k).charAt(3));
+                            specialPiece = Board.board[v[1][0]][v[1][1]];
+                            
                             Moves.recordMove(auxMoves.get(k)); // Facem mutarea
                             if (!checkIfCheck()) { // Daca nu este sah
                                 moves.add(auxMoves.get(k));// Adaugam mutarea in lista finala cu mutari
                             }
-                            Moves.revertMove(auxMoves.get(k)); // Dam undo la mutare pentru a putea verifica si urmatoarele piese pe aceiasi tabla
+                            Moves.revertMove(auxMoves.get(k), specialPiece); // Dam undo la mutare pentru a putea verifica si urmatoarele piese pe aceiasi tabla
                         }
                     }
-                } else {
-                    if (Board.isWhitePiece(i, j)) { // Daca piesa de pe tabla e alba   
-                        auxMoves.clear(); // Golim lista de mutari
+                } else { // Daca suntem playerul alb
+                    if (Board.isWhitePiece(i, j)) { // Daca piesa de pe tabla e alba
                         auxMoves = Pieces.getAllMoves(i, j); // Preluam toate mutarile pentru piesa de pe pozitia i si j
                         for (int k = 0; k < auxMoves.size(); k++) { // Pentru fiecare mutare
+                            
+                            int v[][] = Board.translatePosition(auxMoves.get(k).charAt(0) + "" + auxMoves.get(k).charAt(1) + "" + auxMoves.get(k).charAt(2) + "" + auxMoves.get(k).charAt(3));
+                            specialPiece = Board.board[v[1][0]][v[1][1]];
+                            
                             Moves.recordMove(auxMoves.get(k)); // Facem mutarea
                             if (!checkIfCheck()) { // Daca nu este sah
                                 moves.add(auxMoves.get(k));// Adaugam mutarea in lista finala cu mutari
                             }
-                            Moves.revertMove(auxMoves.get(k)); // Dam undo la mutare pentru a putea verifica si urmatoarele piese pe aceiasi tabla
+                            Moves.revertMove(auxMoves.get(k), specialPiece); // Dam undo la mutare pentru a putea verifica si urmatoarele piese pe aceiasi tabla
                         }
                     }
                 }
             }
         }
+        
+        /*System.out.println("Mutarile finale pentru culoarea "+ color+", la adancimea "+ depth +" sunt:");
+        for (int i = 0; i < moves.size(); i++){
+            System.out.println(moves.get(i));
+        }*/
 
         for (int i = 0; i < moves.size(); i++) { // Pentru fiecare mutare din lista finala de mutari
+            
+            int v[][] = Board.translatePosition(moves.get(i).charAt(0) + "" + moves.get(i).charAt(1) + "" + moves.get(i).charAt(2) + "" + moves.get(i).charAt(3));
+            specialPiece = Board.board[v[1][0]][v[1][1]];
+            
             Moves.recordMove(moves.get(i)); // Inregistram mutarea
             swapEngineColor(); // Schimbam culoarea engineului pentru a simula continuarea partidei
-            int score = -(int) NegaMax(depth - 1).get(0); // Apelam recursiv functia NegaMax pentru a ne intoarce un punctaj
+            //System.out.println("Inainte de apelare depth este:" + depth);
+            int score = -((int)NegaMax(depth-1).get(0)); // Apelam recursiv functia NegaMax pentru a ne intoarce un punctaj
+            //System.out.println("scorul intors este: "+score);
             if (score > ((int) result.get(0))) { // Daca punctajul intors e mai mare decat cel maxim
                 result.clear(); // Curatam rezultatul
                 result.add((int) score); // Adaugam pe prima pozitie a rezultatului scorul
                 result.add(moves.get(i)); // Iar pe a doua pozitie mutarea
             }
             swapEngineColor(); // Schimbam culoarea engineului la loc
-            Moves.revertMove(moves.get(i)); // Dam undo la mutare pentru a putea verifica si urmatoarele scoruri pe aceiasi tabla
+            Moves.revertMove(moves.get(i), specialPiece); // Dam undo la mutare pentru a putea verifica si urmatoarele scoruri pe aceiasi tabla
         }
 
         return result;
@@ -255,7 +243,7 @@ public class Engine {
      * @return
      */
     private static int Evaluate() {
-
+        //System.out.println("Am intrat in Evaluate");
         /* Declarari */
         int score = 0;
         int piecesScore = 0;
@@ -335,16 +323,16 @@ public class Engine {
         }
 
         /* Calcularea scorului */
-        score = piecesScore * (numberOfWhitePieces - numberOfBlackPieces) * EngineColor;
+        score = piecesScore;
 
         return score;
     }
 
     private static void swapEngineColor() throws IOException {
         if ("black".equals(color)) {
-            setEngineColor("white");
+            color = "white";
         } else {
-            setEngineColor("black");
+            color = "black";
         }
     }
 
