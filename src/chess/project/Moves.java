@@ -22,7 +22,6 @@ public class Moves {
     static String theMove;
     static String receivedMove;
     static String specialMove;
-    //static int specialPiece;
 
     /**
      * Verifica daca mutarea este legala. (BYPASSED)
@@ -45,7 +44,7 @@ public class Moves {
     
     static int computeMove() throws IOException{
         Engine.actualColor = Engine.color; // Setam culoarea engineului pentur evaluare
-        ArrayList move = Engine.NegaMax(3); // Preluam mutarea de la NegaMax
+        ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
         System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:"  /*move.get(1)*/);
         recordMove((String) move.get(1)); // Inregistram mutarea finala
         Logger.write("LOGGER::"+ Engine.color + "::" + "Am facut mutarea: " + (String)move.get(1));
@@ -86,7 +85,6 @@ public class Moves {
      */
     static void recordMove(String cmd) throws IOException {
         int v[][] = Board.translatePosition(cmd.charAt(0) + "" + cmd.charAt(1) + "" + cmd.charAt(2) + "" + cmd.charAt(3));
-        //specialPiece = Board.board[v[1][0]][v[1][1]]; // Piesa ce urmeaza a fi inlocuita
         Board.board[v[1][0]][v[1][1]] = Board.board[v[0][0]][v[0][1]];
         Board.board[v[0][0]][v[0][1]] = 0;
 
