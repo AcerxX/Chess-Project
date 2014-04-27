@@ -47,7 +47,7 @@ public class Moves {
         
         if ("black".equals(Engine.color)) {
             if (Database.blackOpening.isEmpty()) {
-                ArrayList move = Engine.NegaMax(1); // Preluam mutarea / mutarile de la NegaMax
+                ArrayList move = Engine.NegaMax(2); // Preluam mutarea / mutarile de la NegaMax
                 
                 if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
                     return 1;
@@ -71,7 +71,7 @@ public class Moves {
             }
         } else {
             if (Database.whiteOpening.isEmpty()) {
-                ArrayList move = Engine.NegaMax(1); // Preluam mutarea de la NegaMax
+                ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
                 
                 if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
                     return 1;
