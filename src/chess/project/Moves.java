@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 2.1
+ * @version 2.2
  * @author Selennae
  */
 public class Moves {
@@ -41,15 +41,47 @@ public class Moves {
     static boolean isInTurn() {
         return true;
     }
-    
-    static int computeMove() throws IOException{
-        Engine.actualColor = Engine.color; // Setam culoarea engineului pentur evaluare
-        ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
-        System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:"  /*move.get(1)*/);
-        recordMove((String) move.get(1)); // Inregistram mutarea finala
-        Logger.write("LOGGER::"+ Engine.color + "::" + "Am facut mutarea: " + (String)move.get(1));
-        System.out.println("move " + (String)move.get(1));
-        return 1;        
+
+    static int computeMove() throws IOException {
+        Engine.actualColor = Engine.color; // Setam culoarea engineului pentru evaluare
+        
+        if ("black".equals(Engine.color)) {
+            if (Database.blackOpening.isEmpty()) {
+                ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
+                System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:" /*move.get(1)*/);
+                recordMove((String) move.get(1)); // Inregistram mutarea finala
+                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(1));
+                System.out.println("move " + (String) move.get(1)); // Trimitem mutarea din NegaMax la winboard
+            } else {
+                String nextMove = Database.nextBlackMove(); // Preluam urmatoarea mutare din DB
+                int v[][] = Board.translatePosition(nextMove.charAt(0) + "" + nextMove.charAt(1) + "" + nextMove.charAt(2) + "" + nextMove.charAt(3));
+                if(Board.isWhitePiece(v[1][0], v[1][1]) && (Board.board[v[0][0]][v[0][1]] == 'p')){
+                    Database.blackOpening.clear();
+                    return -1;
+                }
+                recordMove(nextMove); // O inregistram
+                System.out.println("move " + nextMove); //Trimitem mutarea din DB la winboard
+            }
+        } else {
+            if (Database.whiteOpening.isEmpty()) {
+                ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
+                System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:" /*move.get(1)*/);
+                recordMove((String) move.get(1)); // Inregistram mutarea finala
+                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(1));
+                System.out.println("move " + (String) move.get(1)); // Trimitem mutarea din NegaMax la winboard
+            } else {
+                String nextMove = Database.nextWhiteMove(); // Preluam urmatoarea mutare din DB
+                int v[][] = Board.translatePosition(nextMove.charAt(0) + "" + nextMove.charAt(1) + "" + nextMove.charAt(2) + "" + nextMove.charAt(3));
+                if(Board.isBlackPiece(v[1][0], v[1][1]) && (Board.board[v[0][0]][v[0][1]] == 'P')){
+                    Database.whiteOpening.clear();
+                    return -1;
+                }
+                recordMove(nextMove); // O inregistram
+                System.out.println("move " + nextMove); //Trimitem mutarea din DB la winboard
+            }
+        }
+        
+        return 1;
     }
 
     /**

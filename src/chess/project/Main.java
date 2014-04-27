@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @version 1.0
+ * @version 2.2
  * @author Alexandru MIHAI
  */
 public class Main {
@@ -78,6 +78,7 @@ public class Main {
             if (cmd.equals("new")) {
                 Logger.write("LOGGER::" + Engine.color + "::" + "Am setat force FALSE!");
                 Board.newGame();
+                Database.populateDatabase();
             }
 
             /*XBoard*/

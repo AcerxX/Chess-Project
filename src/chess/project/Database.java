@@ -12,31 +12,44 @@ import java.util.ArrayList;
 
 /**
  *
+ * @version 2.2
  * @author alexa_000
  */
 public class Database {
     
-    private String lastMove;
-    private ArrayList<String> whiteOpening = new ArrayList<>();
-    private ArrayList<String> blackOpening = new ArrayList<>();
+    static String lastMove;
+    static ArrayList<String> whiteOpening = new ArrayList<>();
+    static ArrayList<String> blackOpening = new ArrayList<>();
     
-    private Database(){
+    static void populateDatabase(){
         lastMove = new String();
+        whiteOpening.clear();
+        blackOpening.clear();
+        
         whiteOpening.add("d2d4");
         whiteOpening.add("e2e3");
         whiteOpening.add("f1d3");
         whiteOpening.add("f2f4");
-        whiteOpening.add("");
-    }
-    
-    private String nextBlackMove(){
-        return null;
+        whiteOpening.add("g1f3");
         
+        blackOpening.add("d7d5");
+        blackOpening.add("e7e6");
+        blackOpening.add("g8f6");
+        blackOpening.add("f8d6");
+        blackOpening.add("b7b6");
     }
     
-    private String nextWhiteMove(){
-        return null;
-        
+    static String nextBlackMove(){
+        if(!blackOpening.isEmpty())
+            return blackOpening.remove(0);
+        else
+            return null;
     }
     
+    static String nextWhiteMove(){
+        if(!whiteOpening.isEmpty())
+            return whiteOpening.remove(0);
+        else
+            return null;
+    }    
 }
