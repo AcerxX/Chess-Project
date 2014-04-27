@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 2.2
+ * @version 2.3
  * @author Selennae
  */
 public class Moves {
@@ -47,11 +47,18 @@ public class Moves {
         
         if ("black".equals(Engine.color)) {
             if (Database.blackOpening.isEmpty()) {
-                ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
-                System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:" /*move.get(1)*/);
-                recordMove((String) move.get(1)); // Inregistram mutarea finala
-                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(1));
-                System.out.println("move " + (String) move.get(1)); // Trimitem mutarea din NegaMax la winboard
+                ArrayList move = Engine.NegaMax(1); // Preluam mutarea / mutarile de la NegaMax
+                
+                if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
+                    return 1;
+                }
+                
+                Random rand = new Random();
+                int n = rand.nextInt(move.size() - 1) + 1; // Alegem o mutare random dintre cele cu acelasi scor maxim din NegaMax
+                
+                recordMove((String) move.get(n)); // Inregistram mutarea finala
+                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(n));
+                System.out.println("move " + (String) move.get(n)); // Trimitem mutarea din NegaMax la winboard
             } else {
                 String nextMove = Database.nextBlackMove(); // Preluam urmatoarea mutare din DB
                 int v[][] = Board.translatePosition(nextMove.charAt(0) + "" + nextMove.charAt(1) + "" + nextMove.charAt(2) + "" + nextMove.charAt(3));
@@ -64,11 +71,18 @@ public class Moves {
             }
         } else {
             if (Database.whiteOpening.isEmpty()) {
-                ArrayList move = Engine.NegaMax(2); // Preluam mutarea de la NegaMax
-                System.out.println("Negamax a trimis pe poz 0:" + move.get(0) + ", iar pe pozitia 2:" /*move.get(1)*/);
-                recordMove((String) move.get(1)); // Inregistram mutarea finala
-                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(1));
-                System.out.println("move " + (String) move.get(1)); // Trimitem mutarea din NegaMax la winboard
+                ArrayList move = Engine.NegaMax(1); // Preluam mutarea de la NegaMax
+                
+                if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
+                    return 1;
+                }
+                
+                Random rand = new Random();
+                int n = rand.nextInt(move.size() - 1) + 1; // Alegem o mutare random dintre cele cu acelasi scor maxim din NegaMax
+                
+                recordMove((String) move.get(n)); // Inregistram mutarea finala
+                Logger.write("LOGGER::" + Engine.color + "::" + "Am facut mutarea: " + (String) move.get(n));
+                System.out.println("move " + (String) move.get(n)); // Trimitem mutarea din NegaMax la winboard
             } else {
                 String nextMove = Database.nextWhiteMove(); // Preluam urmatoarea mutare din DB
                 int v[][] = Board.translatePosition(nextMove.charAt(0) + "" + nextMove.charAt(1) + "" + nextMove.charAt(2) + "" + nextMove.charAt(3));
