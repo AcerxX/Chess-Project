@@ -138,37 +138,27 @@ public class Engine {
         return false;
     }
 
-    /**
-     * Algoritm de predictie a celei mai bune mutari.<BR>
-     * Returneaza pe prima pozitie scorul, iar pe a doua mutarea.<BR>
-     *
-     * @param depth
-     * @return
-     * @throws IOException
-     */
-    static ArrayList NegaMax(int depth) throws IOException {
-        /*System.out.println("Dupa apelare depth este:" + depth);
-         for(int i = 2; i < 10; i++){
-         for(int j = 2; j < 10; j++)
-         System.out.print((char)Board.board[i][j] + " ");
-         System.out.println();
-         }*/
+    static ArrayList alfaBeta(int alpha, int beta, int depth) throws IOException { //Fail-Soft Alpha-Beta
 
         /* Declarari */
         ArrayList<String> moves = new ArrayList<>(); // Lista de mutari ce va contine TOATE mutarile posibile intr-o tura
         ArrayList<String> auxMoves = new ArrayList<>();
-        ArrayList result = new ArrayList();
         ArrayList eval = new ArrayList();
+        ArrayList result = new ArrayList();
+        ArrayList bestscore = new ArrayList();
         int specialPiece;
+
 
         /* Implementare */
         if (depth == 0) { // Daca adancimea e 0 se evalueaza tabla 
-            eval.add(Evaluate());
+            eval.clear();
+            eval.add(Quiesce(alpha, beta, false));
             return eval;
         }
 
         result.clear();
-        result.add(Integer.MIN_VALUE);
+        bestscore.clear();
+        bestscore.add(Integer.MIN_VALUE);
 
         /* Preluam toate mutarile pentru toate piesele de pe tabla de culoarea noastra */
         for (int i = 2; i < 10; i++) {
@@ -208,10 +198,6 @@ public class Engine {
             }
         }
 
-        /*System.out.println("Mutarile finale pentru culoarea "+ color+", la adancimea "+ depth +" sunt:");
-         for (int i = 0; i < moves.size(); i++){
-         System.out.println(moves.get(i));
-         }*/
         for (int i = 0; i < moves.size(); i++) { // Pentru fiecare mutare din lista finala de mutari
 
             int v[][] = Board.translatePosition(moves.get(i).charAt(0) + "" + moves.get(i).charAt(1) + "" + moves.get(i).charAt(2) + "" + moves.get(i).charAt(3));
@@ -219,23 +205,31 @@ public class Engine {
 
             Moves.recordMove(moves.get(i)); // Inregistram mutarea
             swapEngineColor(); // Schimbam culoarea engineului pentru a simula continuarea partidei
-            //System.out.println("Inainte de apelare depth este:" + depth);
-            int score = -((int) NegaMax(depth - 1).get(0)); // Apelam recursiv functia NegaMax pentru a ne intoarce un punctaj
-            //System.out.println("scorul intors este: "+score);
-            if (score >= ((int) result.get(0))) { // Daca punctajul intors e mai mare sau egal decat cel maxim
-                if (score > ((int) result.get(0))) { // Daca este strict mai mare
-                    result.clear(); // Curatam rezultatul
-                    result.add((int) score); // Adaugam pe prima pozitie a rezultatului scorul
-                    result.add(moves.get(i)); // Iar pe a doua pozitie mutarea
-                } else {
-                    result.add(moves.get(i)); // Altfel adaugam doar mutarea in lista de mutari cu cel mai mare scor
+            int score = -((int) alfaBeta(-beta, -alpha, depth - 1).get(0)); // Apelam recursiv functia NegaMax pentru a ne intoarce un punctaj
+
+            if (score >= beta) { // Daca punctajul intors e mai mare sau egal decat beta
+                result.clear(); // Curatam rezultatul
+                result.add((int) score); // Adaugam pe prima pozitie a rezultatului scorul
+                result.add(moves.get(i)); // Iar pe a doua pozitie mutarea
+                swapEngineColor(); // Schimbam culoarea engineului la loc
+                Moves.revertMove(moves.get(i), specialPiece); // Dam undo la mutare pentru a putea verifica si urmatoarele scoruri pe aceiasi tabla
+                return result; // fail-soft beta-cutoff
+            }
+
+            if (score > (int) bestscore.get(0)) {
+                bestscore.clear(); // Curatam rezultatul
+                bestscore.add(score); // Adaugam pe prima pozitie a rezultatului scorul
+                bestscore.add(moves.get(i)); // Iar pe a doua pozitie mutarea
+                if (score > alpha) {
+                    alpha = score;
                 }
             }
-            swapEngineColor(); // Schimbam culoarea engineului la loc
-            Moves.revertMove(moves.get(i), specialPiece); // Dam undo la mutare pentru a putea verifica si urmatoarele scoruri pe aceiasi tabla
+
+            swapEngineColor();
+            Moves.revertMove(moves.get(i), specialPiece);
         }
 
-        return result;
+        return bestscore;
     }
 
     /**
@@ -251,14 +245,14 @@ public class Engine {
         int piecesScore = 0;
         int extraScore = 0;
         boolean colorChanged = false;
-        
+
         /**
          * Evaluarea trebuie facuta pe culoarea engineului. Astfel, cum metoda
          * recordMove() depinde de Engine.color, aceasta trebuie schimbata in
          * Engine.actualColor, in caz ca difera una de cealalta pentru a
          * inregistra mutarile asa cum trebuie.
          */
-        if(!Engine.color.equals(Engine.actualColor)){
+        if (!Engine.color.equals(Engine.actualColor)) {
             swapEngineColor();
             colorChanged = true;
         }
@@ -280,18 +274,18 @@ public class Engine {
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'p':
                                 piecesScore += 1;
-                                
+
                                 ArrayList<String> p = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!p.isEmpty()) { // Daca sunt mutari
                                     for (String y : p) { // Pentru fiecare mutare
@@ -299,37 +293,37 @@ public class Engine {
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'c':
                                 piecesScore += 5;
-                                
+
                                 ArrayList<String> c = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!c.isEmpty()) { // Daca sunt mutari
                                     for (String y : c) { // Pentru fiecare mutare
                                         int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
-                                           int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'n':
                                 piecesScore += 15;
-                                
+
                                 ArrayList<String> n = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!n.isEmpty()) { // Daca sunt mutari
                                     for (String y : n) { // Pentru fiecare mutare
@@ -337,18 +331,18 @@ public class Engine {
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'd':
                                 piecesScore += 25;
-                                
+
                                 ArrayList<String> d = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!d.isEmpty()) { // Daca sunt mutari
                                     for (String y : d) { // Pentru fiecare mutare
@@ -356,18 +350,18 @@ public class Engine {
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'r':
                                 piecesScore += 50;
-                                
+
                                 ArrayList<String> r = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!r.isEmpty()) { // Daca sunt mutari
                                     for (String y : r) { // Pentru fiecare mutare
@@ -375,14 +369,14 @@ public class Engine {
                                         if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                         }
                     }
@@ -391,7 +385,7 @@ public class Engine {
                         switch (Board.board[i][j]) {
                             case 'T':
                                 piecesScore += 10;
-                                
+
                                 ArrayList<String> T = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!T.isEmpty()) { // Daca sunt mutari
                                     for (String y : T) { // Pentru fiecare mutare
@@ -399,18 +393,18 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'P':
                                 piecesScore += 1;
-                                
+
                                 ArrayList<String> P = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!P.isEmpty()) { // Daca sunt mutari
                                     for (String y : P) { // Pentru fiecare mutare
@@ -418,18 +412,18 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'C':
                                 piecesScore += 5;
-                                
+
                                 ArrayList<String> C = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!C.isEmpty()) { // Daca sunt mutari
                                     for (String y : C) { // Pentru fiecare mutare
@@ -437,18 +431,18 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'N':
                                 piecesScore += 15;
-                                
+
                                 ArrayList<String> N = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!N.isEmpty()) { // Daca sunt mutari
                                     for (String y : N) { // Pentru fiecare mutare
@@ -456,18 +450,18 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'D':
                                 piecesScore += 25;
-                                
+
                                 ArrayList<String> D = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!D.isEmpty()) { // Daca sunt mutari
                                     for (String y : D) { // Pentru fiecare mutare
@@ -475,18 +469,18 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                             case 'R':
                                 piecesScore += 50;
-                                
+
                                 ArrayList<String> R = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
                                 if (!R.isEmpty()) { // Daca sunt mutari
                                     for (String y : R) { // Pentru fiecare mutare
@@ -494,25 +488,25 @@ public class Engine {
                                         if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
                                             int takenPiece = Board.board[v[1][0]][v[1][1]];
                                             Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
-                                            if(!Engine.checkIfCheck()){ // Daca nu e sah
+                                            if (!Engine.checkIfCheck()) { // Daca nu e sah
                                                 extraScore++; // Punctam in plus                                                
                                             }
                                             Moves.revertMove(y, takenPiece); // Facem undo la mutare
                                         }
                                     }
                                 }
-                                
+
                                 break;
                         }
                     }
                 }
             }
         }
-        
+
         /**
          * Schimbam inapoi culoarea pentru a nu influenta NegaMax
          */
-        if(colorChanged){
+        if (colorChanged) {
             swapEngineColor();
         }
 
@@ -530,4 +524,377 @@ public class Engine {
         }
     }
 
+    private static int Quiesce(int alpha, int beta, boolean swapped) throws IOException {
+        boolean colorChanged = false;
+        int score = Integer.MIN_VALUE;
+        int standPat = Evaluate();
+
+        if (standPat >= beta) {
+            return beta;
+        }
+
+        if (alpha < standPat) {
+            alpha = standPat;
+        }
+
+        /**
+         * Evaluarea trebuie facuta pe culoarea engineului. Astfel, cum metoda
+         * recordMove() depinde de Engine.color, aceasta trebuie schimbata in
+         * Engine.actualColor, in caz ca difera una de cealalta pentru a
+         * inregistra mutarile asa cum trebuie.
+         */
+        if (!Engine.color.equals(Engine.actualColor) && (!swapped)) {
+            swapEngineColor();
+            colorChanged = true;
+        }
+
+        for (int i = 2; i < 10; i++) {
+            for (int j = 2; j < 10; j++) {
+                if ("black".equals(actualColor)) {
+                    if (Board.isBlackPiece(i, j)) {
+                        switch (Board.board[i][j]) {
+                            case 't':
+                                ArrayList<String> t = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!t.isEmpty()) { // Daca sunt mutari
+                                    for (String y : t) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'p':
+                                ArrayList<String> p = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!p.isEmpty()) { // Daca sunt mutari
+                                    for (String y : p) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'c':
+                                ArrayList<String> c = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!c.isEmpty()) { // Daca sunt mutari
+                                    for (String y : c) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'n':
+                                ArrayList<String> n = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!n.isEmpty()) { // Daca sunt mutari
+                                    for (String y : n) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'd':
+                                ArrayList<String> d = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!d.isEmpty()) { // Daca sunt mutari
+                                    for (String y : d) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'r':
+                                ArrayList<String> r = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!r.isEmpty()) { // Daca sunt mutari
+                                    for (String y : r) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isWhitePiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                        }
+                    }
+                } else {
+                    if (Board.isWhitePiece(i, j)) {
+                        switch (Board.board[i][j]) {
+                            case 'T':
+                                ArrayList<String> T = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!T.isEmpty()) { // Daca sunt mutari
+                                    for (String y : T) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'P':
+                                ArrayList<String> P = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!P.isEmpty()) { // Daca sunt mutari
+                                    for (String y : P) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'C':
+                                ArrayList<String> C = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!C.isEmpty()) { // Daca sunt mutari
+                                    for (String y : C) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'N':
+                                ArrayList<String> N = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!N.isEmpty()) { // Daca sunt mutari
+                                    for (String y : N) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'D':
+                                ArrayList<String> D = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!D.isEmpty()) { // Daca sunt mutari
+                                    for (String y : D) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            case 'R':
+                                ArrayList<String> R = Pieces.getAllMoves(i, j); // Preluam toate mutarile piesei
+                                if (!R.isEmpty()) { // Daca sunt mutari
+                                    for (String y : R) { // Pentru fiecare mutare
+                                        int v[][] = Board.translatePosition(y.charAt(0) + "" + y.charAt(1) + "" + y.charAt(2) + "" + y.charAt(3));
+                                        if (Board.isBlackPiece(v[1][0], v[1][1])) { // Daca mutarea pica pe vreo piesa de culoare adversa 
+                                            int takenPiece = Board.board[v[1][0]][v[1][1]];
+                                            Moves.recordMove(y); // Inregistram mutarea pentru a verifica daca este sah
+                                            if (!checkIfCheck()) {
+                                                swapEngineColor(); // schimbam pentru urmatoarea mutare
+                                                score = -Quiesce(-beta, -alpha, true);
+                                                swapEngineColor(); // dam undo la culoare pentru a nu influenta totul
+                                            }
+                                            Moves.revertMove(y, takenPiece); // Facem undo la mutare
+
+                                            if (score >= beta) {
+                                                return beta;
+                                            }
+
+                                            if (score > alpha) {
+                                                alpha = score;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * Schimbam inapoi culoarea pentru a nu influenta alfa-beta
+         */
+        if (colorChanged) {
+            swapEngineColor();
+        }
+
+        return alpha;
+    }
 }
