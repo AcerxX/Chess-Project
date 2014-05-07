@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @version 2.3
+ * @version 2.5
  * @author Selennae
  */
 public class Moves {
@@ -47,7 +47,7 @@ public class Moves {
         
         if ("black".equals(Engine.color)) {
             if (Database.blackOpening.isEmpty()) {
-                ArrayList move = Engine.alfaBeta(Integer.MIN_VALUE, Integer.MIN_VALUE, 6); // Preluam mutarea de la Alfa-Beta
+                ArrayList move = Engine.alfaBeta(Integer.MIN_VALUE, Integer.MAX_VALUE, 2); // Preluam mutarea de la Alfa-Beta
                 
                 if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
                     return 1;
@@ -72,7 +72,7 @@ public class Moves {
             }
         } else {
             if (Database.whiteOpening.isEmpty()) {
-                ArrayList move = Engine.alfaBeta(Integer.MIN_VALUE, Integer.MIN_VALUE, 6); // Preluam mutarea de la Alfa-Beta
+                ArrayList move = Engine.alfaBeta(Integer.MIN_VALUE, Integer.MAX_VALUE, 2); // Preluam mutarea de la Alfa-Beta
                 
                 if(move.size() < 2){ // Daca nu mai sunt mutari, iesim
                     return 1;
