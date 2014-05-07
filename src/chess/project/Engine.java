@@ -216,10 +216,15 @@ public class Engine {
                 return result; // fail-soft beta-cutoff
             }
 
-            if (score > (int) bestscore.get(0)) {
-                bestscore.clear(); // Curatam rezultatul
-                bestscore.add(score); // Adaugam pe prima pozitie a rezultatului scorul
-                bestscore.add(moves.get(i)); // Iar pe a doua pozitie mutarea
+            if (score >= (int) bestscore.get(0)) {
+                if(score >= (int) bestscore.get(0)){
+                    bestscore.clear(); // Curatam rezultatul
+                    bestscore.add(score); // Adaugam pe prima pozitie a rezultatului scorul
+                    bestscore.add(moves.get(i)); // Iar pe a doua pozitie mutarea
+                }else{
+                    bestscore.add(moves.get(i));
+                }
+                
                 if (score > alpha) {
                     alpha = score;
                 }
